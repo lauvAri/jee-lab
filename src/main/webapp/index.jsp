@@ -10,6 +10,8 @@
 <div id="Content">
     <h1>hello</h1>
     <p><a href="/mainForm">go to mainForm</a></p>
+    <p><a href="/registrationView">SignUp</a></p>
+
 </div>
 </body>
 </html>
