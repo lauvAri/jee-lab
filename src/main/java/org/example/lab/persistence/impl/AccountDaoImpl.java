@@ -59,6 +59,39 @@ public class AccountDaoImpl implements AccountDao {
             "      AND PROFILE.USERID = ACCOUNT.USERID\n" +
             "      AND PROFILE.FAVCATEGORY = BANNERDATA.FAVCATEGORY";
 
+    private final String INSERT_ACCOUNT = "INSERT INTO ACCOUNT\n" +
+            "      (EMAIL, FIRSTNAME, LASTNAME, STATUS, ADDR1, ADDR2, CITY, STATE, ZIP, COUNTRY, PHONE, USERID)\n" +
+            "    VALUES\n" +
+            "      (?, ?, ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?)";
+
+    private final String INSERT_PROFILE = " INSERT INTO PROFILE (LANGPREF, FAVCATEGORY, USERID, MYLISTOPT, BANNEROPT)\n" +
+            "    VALUES (?, ?, ?, ?, ?)";
+
+    private static final String INSERT_SIGNON = "INSERT INTO SIGNON (PASSWORD,USERNAME)\n" +
+            "    VALUES (?, ?)";
+
+    private static final String UPDATE_SIGNON  = " UPDATE SIGNON SET PASSWORD = #{password}\n" +
+            "    WHERE USERNAME = #{username}";
+
+    private static final String UPDATE_ACCOUNT = "UPDATE ACCOUNT SET\n" +
+            "      EMAIL = #{email},\n" +
+            "      FIRSTNAME = #{firstName},\n" +
+            "      LASTNAME = #{lastName},\n" +
+            "      STATUS = #{status},\n" +
+            "      ADDR1 = #{address1},\n" +
+            "      ADDR2 = #{address2,jdbcType=VARCHAR},\n" +
+            "      CITY = #{city},\n" +
+            "      STATE = #{state},\n" +
+            "      ZIP = #{zip},\n" +
+            "      COUNTRY = #{country},\n" +
+            "      PHONE = #{phone}\n" +
+            "    WHERE USERID = #{username}";
+
+    private static final String UPDATE_PROFILE = "UPDATE PROFILE SET\n" +
+            "      LANGPREF = #{languagePreference},\n" +
+            "      FAVCATEGORY = #{favouriteCategoryId}\n" +
+            "    WHERE USERID = #{username}";
+
     @Override
     public Account getAccountByUsername(String username) {
         Account account = null;
@@ -86,6 +119,9 @@ public class AccountDaoImpl implements AccountDao {
                 account.setBannerOption(rs.getInt("bannerOption") == 1);
                 account.setBannerName(rs.getString("bannerName"));
             }
+            DBUtil.closeResultSet(rs);
+            DBUtil.closeStatement(ps);
+            DBUtil.closeConnection(connection);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -102,6 +138,7 @@ public class AccountDaoImpl implements AccountDao {
             ps.setString(2, account.getPassword());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
+                account.setUsername(rs.getString("USERNAME"));
                account.setEmail(rs.getString("EMAIL"));
                account.setFirstName(rs.getString("FIRSTNAME"));
                account.setLastName(rs.getString("LASTNAME"));
@@ -118,6 +155,8 @@ public class AccountDaoImpl implements AccountDao {
                account.setListOption(rs.getInt("listOption") == 1);
                account.setBannerOption(rs.getInt("bannerOption") == 1);
                account.setBannerName(rs.getString("bannerName"));
+            } else {
+                return null;
             }
             DBUtil.closeResultSet(rs);
             DBUtil.closeStatement(ps);
@@ -131,17 +170,63 @@ public class AccountDaoImpl implements AccountDao {
 
     @Override
     public void insertAccount(Account account) {
-
+        try {
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement ps = connection.prepareStatement(INSERT_ACCOUNT);
+            ps.setString(1, account.getEmail());
+            ps.setString(2, account.getFirstName());
+            ps.setString(3, account.getLastName());
+            ps.setString(4, account.getStatus());
+            ps.setString(5, account.getAddress1());
+            ps.setString(6, account.getAddress2());
+            ps.setString(7, account.getCity());
+            ps.setString(8, account.getState());
+            ps.setString(9, account.getZip());
+            ps.setString(10, account.getCountry());
+            ps.setString(11, account.getPhone());
+            ps.setString(12, account.getUsername());
+            int row = ps.executeUpdate();
+            DBUtil.closeStatement(ps);
+            DBUtil.closeConnection(connection);
+            if (row > 0) {}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void insertProfile(Account account) {
-
+        try {
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement ps = connection.prepareStatement(INSERT_PROFILE);
+            ps.setString(1, account.getLanguagePreference());
+            ps.setString(2, account.getFavouriteCategoryId());
+            ps.setString(3, account.getUsername());
+            ps.setInt(4, account.isListOption()?1:0);
+            ps.setInt(5, account.isBannerOption()?1:0);
+            int row = ps.executeUpdate();
+            if (row > 0) {}
+            DBUtil.closeStatement(ps);
+            DBUtil.closeConnection(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void insertSignon(Account account) {
-
+        try {
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement ps = connection.prepareStatement(INSERT_SIGNON);
+            ps.setString(1, account.getPassword());
+            ps.setString(2, account.getUsername());
+            int row = ps.executeUpdate();
+            if (row > 0) {}
+            DBUtil.closeStatement(ps);
+            DBUtil.closeConnection(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

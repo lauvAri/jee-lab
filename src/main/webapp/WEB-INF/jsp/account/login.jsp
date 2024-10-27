@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +17,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
+<input type="hidden" id="status" value="<%= request.getAttribute("status") %>">
 <div class="main">
 
     <!-- Sing in  Form -->
@@ -77,6 +79,15 @@
 <!-- JS -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="js/main.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="alert/dist/sweetalert.css">
+
+<script>
+    const status = document.getElementById("status").value;
+    if (status === "failed") {
+        swal("${requestScope.loginMsg}", "failed");
+    }
+</script>
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
