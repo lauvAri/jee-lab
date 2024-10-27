@@ -4,7 +4,7 @@
     <a href="mainForm">Return to Main Menu</a>
 </div>
 
-<div id="Catalog">
+<div id="Catalog-Cart">
 
     <div id="Cart">
         <h2>Shopping Cart</h2>
@@ -72,8 +72,6 @@
         </c:if>
 
     </div>
-
-    <div id="Separator">&nbsp;</div>
 </div>
 
 <%@ include file="../common/bottom.jsp"%>

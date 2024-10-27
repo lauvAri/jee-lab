@@ -15,6 +15,12 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/registration.css">
 </head>
 <body>
 <input type="hidden" id="status" value="<%= request.getAttribute("status") %>">

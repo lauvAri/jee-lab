@@ -9,27 +9,50 @@
 <div id="Main">
     <div id="Sidebar">
         <div id="SidebarContent">
+            <svg id="fullsize"  onclick="showFullSize()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="undefined"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+            <svg id="smallsize" style="display:none" onclick="showSmallSize()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="undefined"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+            <br />
             <a href="/categoryForm?categoryId=FISH"><img src="/images/fish_icon.gif" /></a>
             <br />
-            Saltwater, Freshwater
+            <span class="sidebar-detail" style="display: none;">Saltwater, Freshwater</span>
             <br />
             <a href="/categoryForm?categoryId=DOGS"><img src="/images/dogs_icon.gif" /></a>
             <br />
-            Various Breeds
+            <span class="sidebar-detail" style="display: none;">Various Breeds</span>
             <br />
             <a href="/categoryForm?categoryId=CATS"><img src="/images/cats_icon.gif" /></a>
             <br />
-            Various Breeds, Exotic Varieties
+            <span class="sidebar-detail" style="display: none;">Various Breeds, Exotic Varieties</span>
             <br />
             <a href="/categoryForm?categoryId=REPTILES"><img src="/images/reptiles_icon.gif" /></a>
             <br />
-            Lizards, Turtles, Snakes
+            <span class="sidebar-detail" style="display: none;">Lizards, Turtles, Snakes</span>
             <br />
             <a href="/categoryForm?categoryId=BIRDS"><img src="/images/birds_icon.gif" /></a>
             <br />
-            Exotic Varieties
+            <span class="sidebar-detail" style="display: none;">Exotic Varieties</span>
         </div>
     </div>
+    <script>
+        const SidebarContent = document.querySelector('#SidebarContent');
+        const details = document.getElementsByClassName('sidebar-detail');
+        function showFullSize() {
+            SidebarContent.style.width = 'max-content';
+            document.querySelector('#fullsize').style.display = 'none';
+            document.querySelector('#smallsize').style.display = 'block';
+            [...details].forEach(function(detail) {
+                detail.style.display='block';
+            });
+        }
+        function showSmallSize() {
+            SidebarContent.style.width = 'min-content';
+            document.querySelector('#smallsize').style.display = 'none';
+            document.querySelector('#fullsize').style.display = 'block';
+            [...details].forEach(function(detail) {
+                detail.style.display='none';
+            });
+        }
+    </script>
 
     <div id="MainImage">
         <div id="MainImageContent">
@@ -51,7 +74,6 @@
                  usemap="#estoremap" width="350" /></div>
     </div>
 
-    <div id="Separator">&nbsp;</div>
 </div>
 
 <%@ include file="../common/bottom.jsp"%>
