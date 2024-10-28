@@ -30,7 +30,7 @@
                 <c:forEach var="cartItem" items="${sessionScope.cart.cartItems}">
                     <tr>
                         <td>
-                            <a href="/ItemForm?itemId=${cartItem.item.itemId}">${cartItem.item.itemId}</a>
+                            <a href="<c:url value="/ItemForm?itemId=${cartItem.item.itemId}"/>">${cartItem.item.itemId}</a>
                         </td>
                         <td>${cartItem.item.product.productId}</td>
                         <td>${cartItem.item.attribute1} ${cartItem.item.attribute2}

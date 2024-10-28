@@ -1,7 +1,7 @@
 <%@ include file="../common/top.jsp"%>
 
 <div id="BackLink">
-    <a href="/productForm?productId=${sessionScope.product.productId}">
+    <a href="<c:url value="/productForm?productId=${sessionScope.product.productId}"/>">
         Return to ${sessionScope.product.name}
     </a>
 </div>
