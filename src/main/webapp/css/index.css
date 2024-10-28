@@ -1,0 +1,85 @@
+body {
+    /* 背景渐变色 - 原理2 */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    /* 背景尺寸 - 原理3 */
+    background-size: 600% 600%;
+    /* 循环动画 - 原理4 */
+    animation: gradientBG 5s ease infinite;
+}
+
+/* 动画，控制背景 background-position */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+h1 {
+    letter-spacing: 6px;
+    color:white;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+
+p {
+    font-family: Pacifico, cursive;
+    color: white;
+    font-size: 64px;
+}
+
+.first-page {
+    height:100vh;
+}
+
+.second-page {
+    height:100vh;
+}
+
+.start {
+    position:absolute;
+    left:50%;
+    top:150vh;
+    color:white;
+    transform: translate(-50%, -50%);
+    font-size:60px;
+}
+
+.arrow-icon {
+    margin-top:128px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-container {
+    margin-top:24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:64px;
+}
+
+a {
+    padding:16px;
+    border-radius: 32px;
+    background-color: rgba(0,0,0,.6);
+    font-size:16px;
+    font-family: "Playwrite GB S", cursive;
+    font-weight: bold;
+    text-decoration: none;
+    color:white;
+}
+
+a:hover {
+    color:black;
+    background-color: #fff;
+}
