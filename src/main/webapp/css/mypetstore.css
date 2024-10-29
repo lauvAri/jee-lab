@@ -7,7 +7,7 @@
 body {
     width:90%;
     margin:auto;
-    border:20px solid black;
+    border:5px solid black;
     /* 背景渐变色 - 原理2 */
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     /* 背景尺寸 - 原理3 */
@@ -112,7 +112,7 @@ a.Button:hover {
 }
 
 #Header {
-    background-color: #000;
+    background-color: grey;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -126,11 +126,11 @@ a.Button:hover {
     align-items: center;
 
     a {
-        color:#54c07a;
+        color: #eaac00;
     }
 
     a:hover {
-        color:#eaac00;
+        color:white;
 
     }
 }
@@ -169,20 +169,25 @@ a.Button:hover {
     padding-bottom: 20px;
     padding-left:20px;
     height:60vh;
-    display: grid;
+    display: flex;
     grid-template-columns: 5% 1fr;
 }
 
 #SidebarContent {
+    position: relative;
+    left: 20%;
     grid-column:1/2;
     border-radius: 10px;
     background-color: rgba(211,211,211,.3);
     width:min-content;
     padding:20px;
     box-shadow: 10px 10px 4px rgba(0,0,0,.3);
+    animation:0.4s linear forwards;
 }
 
 #MainImage {
+    position: absolute;
+    left: 35%;
     grid-column: 2/3;
     justify-self: center;
     align-self: center;
@@ -266,6 +271,12 @@ li {
     border-radius: 6px;
 }
 
+#BackLink a:hover {
+    color:black;
+    background: white;
+    border: grey 2px;
+}
+
 #Cart{
     width: 69.99%;
     float: left;
@@ -280,6 +291,98 @@ li {
     border-radius: 12px;
     background-color: #ececec23;
     box-shadow: 0 0 5px rgba(0,0, 0, .5);
+}
+
+.MainBanner ul{
+    list-style: none;
+    display: flex;
+}
+
+.MainBanner{
+    position: absolute;
+    right: 8%;
+    width: 512px;
+    height: 256px;
+    border: 2px solid #ccc;
+    margin: 25px auto;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+.MainBannerImage{
+    margin: 0;
+    position: absolute;
+    width: 512px;
+    height: 256px;
+    top: 0;
+    left: 0;
+}
+
+.MainBannerImage ul{
+    display: inline;
+    width: 100%;
+}
+
+.MainBannerImage li{
+    display: inline;
+    float: left;
+}
+
+.MainBannerNum{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 0;
+}
+
+.MainBannerNum li{
+    width: 10px;
+    height: 10px;
+    background:rgba(0,0,0,0.5);
+    border-radius: 100%;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.MainBannerBtn{
+    display: none;
+}
+
+.MainBannerBtn span{
+    display: block;
+    width: 50px;
+    height: 100px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 40px;
+    line-height: 100px;
+    text-align: center;
+    cursor:pointer;
+}
+
+
+.MainBannerBtn .MainBannerPrev{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -50px;
+}
+
+.MainBannerBtn .MainBannerNext{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -50px;
+}
+
+.MainBannerNum .active{
+    background-color: #fff;
+}
+
+.hide{
+    display: none;
 }
 
 table {
