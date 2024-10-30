@@ -1,10 +1,6 @@
 <%@ include file="../common/top.jsp"%>
 
-<div id="Welcome">
-    <div id="WelcomeContent">
-<%--        显示登录用户的firstname--%>
-    </div>
-</div>
+
 
 <div id="Main">
     <div id="Sidebar">
@@ -72,6 +68,43 @@
             </map>
             <img height="355" src="/images/splash.gif" align="middle"
                  usemap="#estoremap" width="350" /></div>
+    </div>
+    <div class="profile-table">
+        <table>
+            <h3>profile</h3>
+            <tr>
+                <th>first name</th>
+                <td>${sessionScope.loginAccount.getFirstName()}</td>
+            </tr>
+            <tr>
+                <th>last name</th>
+                <td>${sessionScope.loginAccount.getLastName()}</td>
+            </tr>
+            <tr>
+                <th>phone</th>
+                <td>${sessionScope.loginAccount.getPhone()}</td>
+            </tr>
+            <tr>
+                <th>email</th>
+                <td>${sessionScope.loginAccount.getEmail()}</td>
+            </tr>
+            <tr>
+                <th>address 1</th>
+                <td>${sessionScope.loginAccount.getAddress1()}</td>
+            </tr>
+            <tr>
+                <th>address 2</th>
+                <td>${sessionScope.loginAccount.getAddress2()}</td>
+            </tr>
+            <tr>
+                <th>city</th>
+                <td>${sessionScope.loginAccount.getCity()}</td>
+            </tr>
+            <tr>
+                <th>country</th>
+                <td>${sessionScope.loginAccount.getCountry()}</td>
+            </tr>
+        </table>
     </div>
 
 </div>

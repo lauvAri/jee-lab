@@ -16,6 +16,7 @@
 </head>
 
 <body>
+<div id="app">
 <div id="Header">
 
     <div id="Logo">
@@ -33,11 +34,12 @@
             </a>
             <img align="middle" src="/images/separator.gif" />
             <c:if test="${sessionScope.loginAccount == null}">
-                <a href="signOnForm">Sign In</a>
+                <a href="/registrationView">Sign In</a>
             </c:if>
             <c:if test="${sessionScope.loginAccount != null}">
-                <a href="#">Sign Out</a>
-                <a href="#">My Account</a>
+                <a href="logout">Sign Out</a>
+                <a href="changePasswordView">Change Password</a>
+                <a href="profileView">My Account</a>
             </c:if>
             <a href="#">?</a>
         </div>
@@ -45,7 +47,7 @@
 
     <div id="Search">
         <div id="SearchContent">
-            <form action="" method="post">
+            <form action="search" method="post">
                 <input type="text" name="keyword" size="14">
                 <input type="submit" value="Search">
             </form>
