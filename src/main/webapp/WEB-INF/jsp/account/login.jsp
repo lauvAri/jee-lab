@@ -41,7 +41,7 @@
                 <div class="signin-form">
                     <h2 class="form-title">Sign in</h2>
                     <form method="post" action="login" class="register-form"
-                          id="login-form">
+                          id="login-form" onsubmit="return checkVeri()">
                         <div class="form-group">
                             <label for="username"><i
                                     class="zmdi zmdi-account material-icons-name"></i></label> <input
@@ -52,6 +52,11 @@
                             <label for="password"><i class="zmdi zmdi-lock"></i></label> <input
                                 type="password" name="password" id="password"
                                 placeholder="Password" />
+                        </div>
+                        <div class="form-group">
+                            <a href="#" id="gen-code-btn">生成验证码</a>
+                            <input type="text" id="veri-code" name="veri-code">
+                            <span id="verify-code-view"></span>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="remember-me" id="remember-me"
@@ -91,7 +96,32 @@
 <script>
     const status = document.getElementById("status").value;
     if (status === "failed") {
-        swal("${requestScope.loginMsg}", "failed");
+        swal("${requestScope.loginMsg}");
+    }
+
+    //验证码
+    const genCodeBtn = document.querySelector("#gen-code-btn");
+    function genCode() {
+        let code = "";
+        const str = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOASDFGHJKLZXCVBNM';
+        for (let i = 0; i < 6; i++) {
+            let random = Math.floor(Math.random()*str.length);
+            code += str[random];
+        }
+        document.querySelector('#verify-code-view').innerText = code;
+    }
+    genCodeBtn.addEventListener('click', genCode);
+
+    function checkVeri() {
+        const verifyCode = document.querySelector('#veri-code').value;
+        const genCode = document.querySelector('#verify-code-view').innerText;
+        console.log(verifyCode.toUpperCase());
+        console.log(genCode.toUpperCase());
+        if (verifyCode.toUpperCase() != genCode.toUpperCase()) {
+            swal("验证码错误");
+            return false;
+        }
+        return true;
     }
 </script>
 </body>
