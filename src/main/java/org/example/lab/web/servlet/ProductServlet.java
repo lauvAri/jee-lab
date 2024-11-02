@@ -5,9 +5,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.example.lab.domain.Account;
 import org.example.lab.domain.Item;
 import org.example.lab.domain.Product;
 import org.example.lab.service.CatalogService;
+import org.example.lab.service.LogService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,6 +30,12 @@ public class ProductServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("product", product);
         session.setAttribute("itemList", itemList);
+        /*进行日志记录*/
+        Account account = (Account) session.getAttribute("loginAccount");
+        if (account != null) {
+            LogService logService = new LogService();
+            logService.log(account.getUsername(), productId, LogService.PRODUCT);
+        }
         request.getRequestDispatcher(PRODUCT_FORM).forward(request, response);
     }
 }
