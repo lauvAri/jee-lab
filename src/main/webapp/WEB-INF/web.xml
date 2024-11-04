@@ -45,8 +45,24 @@
         <servlet-class>org.example.lab.web.servlet.NewOrderFormServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ShippingForm</servlet-name>
+        <servlet-class>org.example.lab.web.servlet.ShippingServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>SignOn</servlet-name>
         <servlet-class>org.example.lab.web.servlet.SignOnServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CommitOrderForm</servlet-name>
+        <servlet-class>org.example.lab.web.servlet.CommitOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfirmOrderForm</servlet-name>
+        <servlet-class>org.example.lab.web.servlet.ConfirmOrderFormServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewOrder</servlet-name>
+        <servlet-class>org.example.lab.web.servlet.ViewOrderServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -90,8 +106,24 @@
         <url-pattern>/categoryForm</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>ShippingForm</servlet-name>
+        <url-pattern>/shippingForm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>MainForm</servlet-name>
         <url-pattern>/mainForm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommitOrderForm</servlet-name>
+        <url-pattern>/commitOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmOrderForm</servlet-name>
+        <url-pattern>/confirmOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewOrder</servlet-name>
+        <url-pattern>/viewOrder</url-pattern>
     </servlet-mapping>
 
 </web-app>

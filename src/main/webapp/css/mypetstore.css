@@ -293,6 +293,11 @@ li {
     box-shadow: 0 0 5px rgba(0,0, 0, .5);
 }
 
+.CatalogButton{
+    width:60px;
+    height:30px;
+}
+
 .MainBanner ul{
     list-style: none;
     display: flex;
