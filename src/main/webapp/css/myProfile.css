@@ -1,0 +1,76 @@
+* {
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    background-image: url("/images/sammy-leigh-scholl-SqhcwFqVlyI-unsplash.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    color:chocolate;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:16px;
+
+    padding:26px;
+    border-radius: 16px;
+
+    box-shadow: 0 0 5px #64748b98;
+
+    position:absolute;
+    left:75%;
+    top:50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-group {
+    display: grid;
+    grid-template-rows: 30% 1fr;
+    gap:8px;
+
+    .entry-label {
+        font-style: italic;
+        font-weight: bold;
+        grid-row: 1/2;
+        text-transform: capitalize;
+        display: block;
+    }
+
+    .entry-input {
+        background-color: transparent;
+        font-style:italic;
+        width:80%;
+        outline: none;
+        grid-row: 2/3;
+        border:none;
+        border-bottom:4px solid #ddd;
+        border-radius: 16px;
+        display: block;
+        padding: 5px 10px;
+    }
+
+    .entry-input:focus {
+        border-color: #555;
+    }
+
+    .submit-btn {
+        width: 40%;
+        color:#555;
+        background: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+}

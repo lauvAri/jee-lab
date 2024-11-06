@@ -77,8 +77,36 @@ public class ProductDaoImpl implements ProductDao {
         return product;
     }
 
+    private static final String SEARCH_PRODUCT_LIST = " select\n" +
+            "      PRODUCTID,\n" +
+            "      NAME,\n" +
+            "      DESCN as description,\n" +
+            "      CATEGORY as categoryId\n" +
+            "    from PRODUCT\n" +
+            "    WHERE lower(name) like ?";
     @Override
     public List<Product> searchProductList(String keywords) {
-        return List.of();
+        List<Product> productList = null;
+        try {
+            productList = new ArrayList<>();
+            Connection conn = DBUtil.getConnection();
+            PreparedStatement ps = conn.prepareStatement(SEARCH_PRODUCT_LIST);
+            ps.setString(1, keywords);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Product product = new Product();
+                product.setProductId(rs.getString(1));
+                product.setName(rs.getString(2));
+                product.setDescription(rs.getString(3));
+                product.setCategoryId(rs.getString(4));
+                productList.add(product);
+            }
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            DBUtil.closeConnection(conn);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return productList;
     }
 }

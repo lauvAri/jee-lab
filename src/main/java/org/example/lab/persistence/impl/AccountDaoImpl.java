@@ -74,18 +74,18 @@ public class AccountDaoImpl implements AccountDao {
             "    WHERE USERNAME = #{username}";
 
     private static final String UPDATE_ACCOUNT = "UPDATE ACCOUNT SET\n" +
-            "      EMAIL = #{email},\n" +
-            "      FIRSTNAME = #{firstName},\n" +
-            "      LASTNAME = #{lastName},\n" +
-            "      STATUS = #{status},\n" +
-            "      ADDR1 = #{address1},\n" +
-            "      ADDR2 = #{address2,jdbcType=VARCHAR},\n" +
-            "      CITY = #{city},\n" +
-            "      STATE = #{state},\n" +
-            "      ZIP = #{zip},\n" +
-            "      COUNTRY = #{country},\n" +
-            "      PHONE = #{phone}\n" +
-            "    WHERE USERID = #{username}";
+            "      EMAIL = ?,\n" +
+            "      FIRSTNAME = ?,\n" +
+            "      LASTNAME = ?,\n" +
+            "      STATUS = ?,\n" +
+            "      ADDR1 = ?,\n" +
+            "      ADDR2 = ?,\n" +
+            "      CITY = ?,\n" +
+            "      STATE = ?,\n" +
+            "      ZIP = ?,\n" +
+            "      COUNTRY = ?,\n" +
+            "      PHONE = ?\n" +
+            "    WHERE USERID = ?";
 
     private static final String UPDATE_PROFILE = "UPDATE PROFILE SET\n" +
             "      LANGPREF = #{languagePreference},\n" +
@@ -231,7 +231,30 @@ public class AccountDaoImpl implements AccountDao {
 
     @Override
     public void updateAccount(Account account) {
-
+        try {
+            Connection conn = DBUtil.getConnection();
+            PreparedStatement ps = conn.prepareStatement(UPDATE_ACCOUNT);
+            ps.setString(1, account.getEmail());
+            ps.setString(2, account.getFirstName());
+            ps.setString(3, account.getLastName());
+            ps.setString(4, account.getStatus());
+            ps.setString(5, account.getAddress1());
+            ps.setString(6, account.getAddress2());
+            ps.setString(7, account.getCity());
+            ps.setString(8, account.getState());
+            ps.setString(9, account.getZip());
+            ps.setString(10, account.getCountry());
+            ps.setString(11, account.getPhone());
+            ps.setString(12, account.getUsername());
+            int row = ps.executeUpdate();
+            if (row > 0) {
+                System.out.println("success");
+            }
+            DBUtil.closeStatement(ps);
+            DBUtil.closeConnection(conn);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

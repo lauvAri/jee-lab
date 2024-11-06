@@ -18,6 +18,7 @@
 </head>
 
 <body>
+<div id="app">
 <div id="Header">
 
     <div id="Logo">
@@ -35,11 +36,12 @@
             </a>
             <img align="middle" src="images/separator.gif" />
             <c:if test="${sessionScope.loginAccount == null}">
-                <a href="signOnForm">Sign In</a>
+                <a href="/registrationView">Sign In</a>
             </c:if>
             <c:if test="${sessionScope.loginAccount != null}">
-                <a href="#">Sign Out</a>
-                <a href="#">My Account</a>
+                <a href="logout">Sign Out</a>
+                <a href="changePasswordView">Change Password</a>
+                <a href="profileView">My Account</a>
             </c:if>
             <a href="#">?</a>
         </div>
@@ -47,7 +49,7 @@
 
     <div id="Search">
         <div id="SearchContent">
-            <form action="" method="post">
+            <form action="search" method="post">
                 <input type="text" name="keyword" size="14">
                 <input type="submit" value="Search">
             </form>
@@ -60,13 +62,13 @@
 </div>
 
 <div id="QuickLinks">
-    <a href="categoryForm?categoryId=FISH"><img src="images/sm_fish.gif" /></a>
-    <a href="#"><img src="images/separator.gif" /> </a>
-    <a href="categoryForm?categoryId=DOGS"><img src="images/sm_dogs.gif" /></a>
-    <a href="#"><img src="images/separator.gif" /></a>
-    <a href="categoryForm?categoryId=REPTILES"><img src="images/sm_reptiles.gif" /></a>
-    <a href="#"><img src="images/separator.gif" /> </a>
-    <a href="categoryForm?categoryId=CATS"><img src="images/sm_cats.gif" /></a>
-    <a href="#"><img src="images/separator.gif" /> </a>
-    <a href="categoryForm?categoryId=BIRDS"><img src="images/sm_birds.gif" /></a>
+    <a href="/categoryFilter?categoryId=FISH"><img src="../images/sm_fish.gif" /></a>
+    <a href="#"><img src="../images/separator.gif" /> </a>
+    <a href="/categoryFilter?categoryId=DOGS"><img src="../images/sm_dogs.gif" /></a>
+    <a href="#"><img src="../images/separator.gif" /></a>
+    <a href="/categoryFilter?categoryId=REPTILES"><img src="../images/sm_reptiles.gif" /></a>
+    <a href="#"><img src="../images/separator.gif" /> </a>
+    <a href="/categoryFilter?categoryId=CATS"><img src="../images/sm_cats.gif" /></a>
+    <a href="#"><img src="../images/separator.gif" /> </a>
+    <a href="/categoryFilter?categoryId=BIRDS"><img src="../images/sm_birds.gif" /></a>
 </div>
