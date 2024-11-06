@@ -21,6 +21,11 @@ public class CartService {
         cartDao.insertCart(username, isInShock, item);
     }
 
+    public void addItemQuantity(String username, String itemId) {
+        System.out.println("func service addItemQuantity");
+        cartDao.addItemQuantity(username,itemId);
+    }
+
     public void removeItemInCart(String username,String itemId) {
         cartDao.removeItemInCart(username, itemId);
     }

@@ -2,6 +2,7 @@ package org.example.lab.persistence.impl;
 
 import org.example.lab.domain.Cart;
 import org.example.lab.domain.Item;
+import org.example.lab.domain.Product;
 import org.example.lab.persistence.CartDao;
 import org.example.lab.persistence.DBUtil;
 
@@ -15,13 +16,15 @@ public class CartDaoImpl implements CartDao {
             "      ITEMID,\n" +
             "      PRODUCTID,\n"+
             "      ISINSHOCK,\n" +
-            "      DESCRIPTION,\n" +
             "      QUANTITY,\n" +
-            "      LISTPRICE,\n" +
-            "      FROM CART \n"+
-            "    WHERE USERID = ?";
+            "      DESCRIPTION,\n" +
+            "      LISTPRICE\n" +
+            "      from CART \n"+
+            "    where USERID = ?";
 
-    private static final String INSERT_CART ="INSERT INTO CART VALUES(?,?,?,?,?,?,?)";
+    private static final String INSERT_CART ="INSERT INTO CART \n" +
+            "(USERID,ITEMID,PRODUCTID,ISINSHOCK,QUANTITY,DESCRIPTION,LISTPRICE)"+
+            "VALUES(?,?,?,?,?,?,?)";
 
     private static final String ADD_QUANTITY_BY_USER_AND_ITEM ="UPDATE CART \n"+
             "SET QUANTITY = QUANTITY + 1 \n"+
@@ -36,6 +39,7 @@ public class CartDaoImpl implements CartDao {
 
     @Override
     public Cart getCartItemIdByUsername(String username) {
+        System.out.println("DaoImpl get cart func");
         Cart cart = new Cart();
         try{
             Connection connection = DBUtil.getConnection();
@@ -45,14 +49,19 @@ public class CartDaoImpl implements CartDao {
             while (resultSet.next()) {
                 Item item = new Item();
                 item.setItemId(resultSet.getString("ITEMID"));
-                item.setProductId(resultSet.getString("PRODUCTID"));
+                //item.setProductId(resultSet.getString("PRODUCTID"));
+                Product product = new Product();
+                product.setProductId(resultSet.getString("PRODUCTID"));
+                item.setProduct(product);
                 item.setQuantity(resultSet.getInt("QUANTITY"));
+                System.out.println("quantity="+item.getQuantity());
                 BigDecimal listPrice = new BigDecimal(resultSet.getString("LISTPRICE"));
                 item.setListPrice(listPrice);
                 item.setAttribute1(resultSet.getString("DESCRIPTION"));
 
                 boolean isInShock = resultSet.getBoolean("ISINSHOCK");
                 cart.addItem(item,isInShock);
+                cart.setQuantityByItemId(item.getItemId(), resultSet.getInt("QUANTITY"));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -64,15 +73,16 @@ public class CartDaoImpl implements CartDao {
     public void insertCart(String username,boolean isInShock,Item item) {
         try{
             System.out.println("func insert SQL");
+            System.out.println(isInShock);
             Connection connection = DBUtil.getConnection();
-            if(!isInShock){
+            if(isInShock){
                 PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CART);
                 preparedStatement.setString(1, username);
                 preparedStatement.setString(2, item.getItemId());
                 preparedStatement.setString(3, item.getProductId());
                 preparedStatement.setString(4, "true");
-                preparedStatement.setString(5, item.getAttribute1());
-                preparedStatement.setInt(6, item.getQuantity());
+                preparedStatement.setInt(5, item.getQuantity());
+                preparedStatement.setString(6, item.getAttribute1());
                 preparedStatement.setString(7, item.getListPrice().toString());
                 preparedStatement.executeUpdate();
                 preparedStatement.close();
@@ -100,6 +110,21 @@ public class CartDaoImpl implements CartDao {
             preparedStatement.close();
             connection.close();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void addItemQuantity(String username, String itemId) {
+        try{
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(ADD_QUANTITY_BY_USER_AND_ITEM);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, itemId);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            connection.close();
+        }catch (Exception e){
             e.printStackTrace();
         }
     }

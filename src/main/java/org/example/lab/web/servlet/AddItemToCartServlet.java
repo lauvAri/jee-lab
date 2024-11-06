@@ -18,12 +18,14 @@ public class AddItemToCartServlet extends HttpServlet {
     //private static final String CART_FORM = "/WEB-INF/jsp/cart/cart.jsp";
     private static final String CART_URL = "/cartForm";
     private static final CartService cartService = new CartService();
+    private static final CatalogService catalogService = new CatalogService();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String workingItemId = request.getParameter("workingItemId");
         HttpSession session = request.getSession();
-        Cart cart = (Cart) session.getAttribute("cart");
+        //Cart cart = (Cart) session.getAttribute("cart");
         //Account account = (Account) session.getAttribute("account");
+        Cart cart = cartService.getCart("ACID");
         //Cart cart1 = new Cart();
 
 
@@ -33,10 +35,12 @@ public class AddItemToCartServlet extends HttpServlet {
 
         if (cart.containsItemId(workingItemId)) {
             cart.incrementQuantityByItemId(workingItemId);
+            cartService.addItemQuantity("ACID", workingItemId);
         } else {
-            CatalogService catalogService = new CatalogService();
             boolean isInStock = catalogService.isItemInStock(workingItemId);
             Item item = catalogService.getItem(workingItemId);
+            item.setQuantity(1);
+            item.setProductId(item.getProduct().getProductId());
             cart.addItem(item, isInStock);
             System.out.println("try add");
             cartService.insertCart("ACID",isInStock,item);
