@@ -1,6 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +19,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/registration.css">
+    <style>
+        #gen-code-btn {
+            display: inline-block;
+            border-radius: 6px;
+            padding:12px 6px;
+            background:#1da0f2;
+            color:#fff;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <input type="hidden" id="status" value="<%= request.getAttribute("status") %>">
@@ -54,9 +62,9 @@
                                 placeholder="Password" />
                         </div>
                         <div class="form-group">
-                            <a href="#" id="gen-code-btn">生成验证码</a>
+                            <span id="gen-code-btn">get captcha</span>
                             <input type="text" id="veri-code" name="veri-code">
-                            <span id="verify-code-view"></span>
+                            <div id="verify-code-view" style="width:100%;margin-top:4px"></div>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="remember-me" id="remember-me"
@@ -104,19 +112,22 @@
     function genCode() {
         let code = "";
         const str = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOASDFGHJKLZXCVBNM';
-        for (let i = 0; i < 6; i++) {
+        let len = Math.floor(4 + Math.random() * 3);
+        for (let i = 0; i < len; i++) {
             let random = Math.floor(Math.random()*str.length);
             code += str[random];
         }
-        document.querySelector('#verify-code-view').innerText = code;
+        let codeHTML = code.split('').map((char)=>{
+            let degree = -20 + Math.floor(-30 + Math.random() * 40);
+            return '<span style="display: inline-block;transform:rotate(' + degree + 'deg); user-select: none; font-family: Georgia">' + char + '</span>';
+        }).join("");
+        document.querySelector('#verify-code-view').innerHTML = codeHTML;
     }
     genCodeBtn.addEventListener('click', genCode);
 
     function checkVeri() {
         const verifyCode = document.querySelector('#veri-code').value;
         const genCode = document.querySelector('#verify-code-view').innerText;
-        console.log(verifyCode.toUpperCase());
-        console.log(genCode.toUpperCase());
         if (verifyCode.toUpperCase() != genCode.toUpperCase()) {
             swal("验证码错误");
             return false;

@@ -22,6 +22,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap" rel="stylesheet">
+    <style>
+        #gen-code-btn {
+            display: inline-block;
+            border-radius: 6px;
+            padding:12px 6px;
+            background:#1da0f2;
+            color:#fff;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
@@ -73,9 +83,9 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <a href="#" id="gen-code-btn">生成验证码</a>
+                            <span id="gen-code-btn">get captcha</span>
                             <input type="text" id="veri-code" name="veri-code">
-                            <span id="verify-code-view"></span>
+                            <div id="verify-code-view" style="width:100%;margin-top:4px"></div>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="agree-term" id="agree-term"
@@ -143,11 +153,16 @@
     function genCode() {
         let code = "";
         const str = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOASDFGHJKLZXCVBNM';
-        for (let i = 0; i < 6; i++) {
+        let len = Math.floor(4 + Math.random() * 3);
+        for (let i = 0; i < len; i++) {
             let random = Math.floor(Math.random()*str.length);
             code += str[random];
         }
-        document.querySelector('#verify-code-view').innerText = code;
+        let codeHTML = code.split('').map((char)=>{
+            let degree = -20 + Math.floor(-30 + Math.random() * 40);
+            return '<span style="display: inline-block;transform:rotate(' + degree + 'deg); user-select: none; font-family: Georgia">' + char + '</span>';
+        }).join("");
+        document.querySelector('#verify-code-view').innerHTML = codeHTML;
     }
     genCodeBtn.addEventListener('click', genCode);
 
