@@ -4,7 +4,7 @@
 <%--<head>--%>
 <%--    <meta charset="UTF-8">--%>
 <%--    <title>index</title>--%>
-<%--    <link href="/css/jpetstore.css" rel="stylesheet">--%>
+<%--    <link href="/css/mypetstore.css" rel="stylesheet">--%>
 <%--</head>--%>
 <%--<body>--%>
 <%--<div id="Content">--%>

@@ -8,7 +8,7 @@
 
     <div id="Cart">
         <h2>Shopping Cart</h2>
-        <form action="/updateCart" method="post">
+        <form action="updateCart" method="post">
             <table>
                 <tr>
                     <th><b>Item ID</b></th>
@@ -30,7 +30,7 @@
                 <c:forEach var="cartItem" items="${sessionScope.cart.cartItems}">
                     <tr>
                         <td>
-                            <a href="/ItemForm?itemId=${cartItem.item.itemId}">${cartItem.item.itemId}</a>
+                            <a href="<c:url value="/ItemForm?itemId=${cartItem.item.itemId}"/>">${cartItem.item.itemId}</a>
                         </td>
                         <td>${cartItem.item.product.productId}</td>
                         <td>${cartItem.item.attribute1} ${cartItem.item.attribute2}
@@ -45,7 +45,7 @@
                         <td><fmt:formatNumber value="${cartItem.total}"
                                               pattern="$#,##0.00" /></td>
                         <td>
-                            <a href="/removeCartItem?workingItemId=${cartItem.item.itemId}" class="Button">Remove</a>
+                            <a href="removeCartItem?workingItemId=${cartItem.item.itemId}" class="Button">Remove</a>
                         </td>
                     </tr>
                 </c:forEach>
