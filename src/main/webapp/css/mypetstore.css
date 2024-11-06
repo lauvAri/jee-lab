@@ -140,7 +140,6 @@ a.Button:hover {
 
     a:hover {
         color:#eaac00;
-
     }
 }
 
@@ -282,6 +281,12 @@ li {
     border-radius: 6px;
 }
 
+#BackLink a:hover {
+    color:black;
+    background: white;
+    border: grey 2px;
+}
+
 #Cart{
     width: 69.99%;
     float: left;
@@ -296,6 +301,103 @@ li {
     border-radius: 12px;
     background-color: #ececec23;
     box-shadow: 0 0 5px rgba(0,0, 0, .5);
+}
+
+.CatalogButton{
+    width:60px;
+    height:30px;
+}
+
+.MainBanner ul{
+    list-style: none;
+    display: flex;
+}
+
+.MainBanner{
+    position: absolute;
+    right: 8%;
+    width: 512px;
+    height: 256px;
+    border: 2px solid #ccc;
+    margin: 25px auto;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+.MainBannerImage{
+    margin: 0;
+    position: absolute;
+    width: 512px;
+    height: 256px;
+    top: 0;
+    left: 0;
+}
+
+.MainBannerImage ul{
+    display: inline;
+    width: 100%;
+}
+
+.MainBannerImage li{
+    display: inline;
+    float: left;
+}
+
+.MainBannerNum{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 0;
+}
+
+.MainBannerNum li{
+    width: 10px;
+    height: 10px;
+    background:rgba(0,0,0,0.5);
+    border-radius: 100%;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.MainBannerBtn{
+    display: none;
+}
+
+.MainBannerBtn span{
+    display: block;
+    width: 50px;
+    height: 100px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 40px;
+    line-height: 100px;
+    text-align: center;
+    cursor:pointer;
+}
+
+
+.MainBannerBtn .MainBannerPrev{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -50px;
+}
+
+.MainBannerBtn .MainBannerNext{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -50px;
+}
+
+.MainBannerNum .active{
+    background-color: #fff;
+}
+
+.hide{
+    display: none;
 }
 
 table {

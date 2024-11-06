@@ -38,6 +38,8 @@
             document.querySelector('#smallsize').style.display = 'block';
             [...details].forEach(function(detail) {
                 detail.style.display='block';
+                detail.style.animation="fade-in-item 0.4s linear forwards";
+                detail.style.opacity="1";
             });
         }
         function showSmallSize() {
@@ -45,7 +47,9 @@
             document.querySelector('#smallsize').style.display = 'none';
             document.querySelector('#fullsize').style.display = 'block';
             [...details].forEach(function(detail) {
-                detail.style.display='none';
+                detail.style.display="none";
+                detail.style.animation="fade-in-item 0.4s linear forwards";
+                detail.style.opacity="0";
             });
         }
     </script>
@@ -66,7 +70,7 @@
                 <area alt="Birds" coords="280,180,350,250"
                       href="/categoryFilter?categoryId=BIRDS" shape="RECT" />
             </map>
-            <img height="355" src="/images/splash.gif" align="middle"
+            <img height="355" src="images/splash.gif" align="middle"
                  usemap="#estoremap" width="350" /></div>
     </div>
     <div class="profile-table">
@@ -107,6 +111,23 @@
         </table>
     </div>
 
+    <div class="MainBanner">
+        <ul class="MainBannerImage">
+            <li><a href="#"><img src="images/mainBanner_fish.png" alt="Fish"></a></li>
+            <li><a href="#"><img src="images/mainBanner_dogs.png" alt="Dogs"></a></li>
+            <li><a href="#"><img src="images/mainBanner_reptiles.png" alt="Reptiles"></a></li>
+            <li><a href="#"><img src="images/mainBanner_cat.png" alt="Cats"></a></li>
+            <li><a href="#"><img src="images/mainBanner_birds.png" alt="Birds"></a></li>
+        </ul>
+        <!--放置圆点-->
+        <ul class="MainBannerNum"></ul>
+        <!--左右按钮-->
+        <div class="MainBannerBtn">
+            <span class="MainBannerPrev"><</span>
+            <span class="MainBannerNext">></span>
+        </div>
+    </div>
 </div>
+
 
 <%@ include file="../common/bottom.jsp"%>
