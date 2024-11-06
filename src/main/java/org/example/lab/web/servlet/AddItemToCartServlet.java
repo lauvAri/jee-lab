@@ -17,6 +17,7 @@ public class AddItemToCartServlet extends HttpServlet {
 
     //private static final String CART_FORM = "/WEB-INF/jsp/cart/cart.jsp";
     private static final String CART_URL = "/cartForm";
+    private static final String SIGNONFORM = "/loginView";
     private static final CartService cartService = new CartService();
     private static final CatalogService catalogService = new CatalogService();
 
@@ -24,10 +25,14 @@ public class AddItemToCartServlet extends HttpServlet {
         String workingItemId = request.getParameter("workingItemId");
         HttpSession session = request.getSession();
         //Cart cart = (Cart) session.getAttribute("cart");
-        //Account account = (Account) session.getAttribute("account");
-        Cart cart = cartService.getCart("ACID");
+        Account account = (Account) session.getAttribute("loginAccount");
         //Cart cart1 = new Cart();
 
+        if (account == null){
+            request.getRequestDispatcher(SIGNONFORM).forward(request, response);
+        }
+
+        Cart cart = cartService.getCart(account.getUsername());
 
         if (cart == null) {
             cart = new Cart();
@@ -35,7 +40,7 @@ public class AddItemToCartServlet extends HttpServlet {
 
         if (cart.containsItemId(workingItemId)) {
             cart.incrementQuantityByItemId(workingItemId);
-            cartService.addItemQuantity("ACID", workingItemId);
+            cartService.addItemQuantity(account.getUsername(), workingItemId);
         } else {
             boolean isInStock = catalogService.isItemInStock(workingItemId);
             Item item = catalogService.getItem(workingItemId);
@@ -43,7 +48,7 @@ public class AddItemToCartServlet extends HttpServlet {
             item.setProductId(item.getProduct().getProductId());
             cart.addItem(item, isInStock);
             System.out.println("try add");
-            cartService.insertCart("ACID",isInStock,item);
+            cartService.insertCart(account.getUsername(),isInStock,item);
         }
         session.setAttribute("cart", cart);
         //request.getRequestDispatcher(CART_FORM).forward(request, response);

@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.example.lab.domain.Account;
 import org.example.lab.domain.Cart;
 import org.example.lab.domain.Item;
 import org.example.lab.service.CartService;
@@ -20,17 +21,22 @@ public class RemoveCartItemServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
         //Cart cart = (Cart) session.getAttribute("cart");
-        Cart cart = cartService.getCart("ACID");
+        Account account = (Account) session.getAttribute("loginAccount");
+        if(account == null) {
+            response.sendRedirect(request.getContextPath() + "/loginView");
+        }
+
+        Cart cart = cartService.getCart(account.getUsername());
 
         String workingItemId = request.getParameter("workingItemId");
         Item item = cart.removeItemById(workingItemId);
-        cartService.removeItemInCart("ACID",workingItemId);
+        cartService.removeItemInCart(account.getUsername(),workingItemId);
 
         if (item == null) {
             session.setAttribute("errormsg", "Attempted to remove null CartItem from Cart.");
             request.getRequestDispatcher(ERROR_FORM).forward(request, response);
         } else {
-            cart = cartService.getCart("ACID");
+            cart = cartService.getCart(account.getUsername());
             request.getRequestDispatcher(CART_FORM).forward(request, response);
         }
     }
