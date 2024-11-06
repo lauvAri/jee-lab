@@ -7,8 +7,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.example.lab.domain.Account;
+import org.example.lab.domain.Cart;
 import org.example.lab.domain.Product;
 import org.example.lab.service.AccountService;
+import org.example.lab.service.CartService;
 import org.example.lab.service.CatalogService;
 
 import java.io.IOException;
@@ -34,7 +36,8 @@ public class LoginServlet extends HttpServlet {
             if (loginAccount != null) {
                 loginAccount.setPassword(null);
                 session.setAttribute("loginAccount", loginAccount);
-
+                Cart cart = new CartService().getCart(loginAccount.getUsername());
+                session.setAttribute("cart", cart);
                 if (loginAccount.isListOption()) {
                     CatalogService catalogService = new CatalogService();
                     List<Product> myList = catalogService.getProductListByCategory(loginAccount.getFavouriteCategoryId());

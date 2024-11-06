@@ -37,6 +37,7 @@ public class RemoveCartItemServlet extends HttpServlet {
             request.getRequestDispatcher(ERROR_FORM).forward(request, response);
         } else {
             cart = cartService.getCart(account.getUsername());
+            session.setAttribute("cart", cart);
             request.getRequestDispatcher(CART_FORM).forward(request, response);
         }
     }
