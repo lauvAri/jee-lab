@@ -26,12 +26,12 @@ public class ItemServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("item", item);
         session.setAttribute("product", product);
-        /*进行日志记录*/
-        Account account = (Account) session.getAttribute("loginAccount");
-        if (account != null) {
-            LogService logService = new LogService();
-            logService.log(account.getUsername(), itemId, LogService.ITEM);
-        }
+//        /*进行日志记录*/
+//        Account account = (Account) session.getAttribute("loginAccount");
+//        if (account != null) {
+//            LogService logService = new LogService();
+//            logService.log(account.getUsername(), itemId, LogService.ITEM);
+//        }
         request.getRequestDispatcher(ITEM_FORM).forward(request, response);
     }
 }

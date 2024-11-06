@@ -30,11 +30,11 @@ public class CategoryServlet extends HttpServlet {
         session.setAttribute("category", category);
         session.setAttribute("productList", productList);
         /*进行日志记录*/
-        Account account = (Account) session.getAttribute("loginAccount");
-        if (account != null) {
-            LogService logService = new LogService();
-            logService.log(account.getUsername(), categoryId, LogService.CATEGORY);
-        }
+//        Account account = (Account) session.getAttribute("loginAccount");
+//        if (account != null) {
+//            LogService logService = new LogService();
+//            logService.log(account.getUsername(), categoryId, LogService.CATEGORY);
+//        }
         request.getRequestDispatcher(CATEGORY_FORM).forward(request, response);
     }
 }
