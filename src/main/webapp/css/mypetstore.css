@@ -178,7 +178,7 @@ a.Button:hover {
     padding-left:20px;
     height:60vh;
     display: grid;
-    grid-template-columns: 20% 50% 1fr;
+    grid-template-columns: 20% 25% 1fr;
     gap:36px;
 }
 
@@ -198,6 +198,13 @@ a.Button:hover {
 }
 
 .profile-table {
+    display: none;
+    /*grid-column: 3/4;*/
+    /*justify-self: center;*/
+    /*align-self: center;*/
+}
+
+.MainBanner {
     grid-column: 3/4;
     justify-self: center;
     align-self: center;
