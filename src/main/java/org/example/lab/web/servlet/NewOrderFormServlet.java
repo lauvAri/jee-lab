@@ -31,7 +31,7 @@ public class NewOrderFormServlet extends HttpServlet {
         cart = (Cart) session.getAttribute("cart");
 
         if (account == null) {
-            resp.sendRedirect(req.getContextPath() + "/signOnForm");
+            resp.sendRedirect(req.getContextPath() + "loginView");
         } else {
             order = new Order();
             order.initOrder(account,cart);

@@ -5,14 +5,13 @@
 }
 
 body {
-    width:90%;
-    margin:auto;
-    border:5px solid black;
-    /* 背景渐变色 - 原理2 */
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    /* 背景尺寸 - 原理3 */
+    width:100%;
+    height:100vh;
+    /*!* 背景渐变色 - 原理2 *!*/
+    background-image: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    /*!* 背景尺寸 - 原理3 *!*/
     background-size: 600% 600%;
-    /* 循环动画 - 原理4 */
+    /*!* 循环动画 - 原理4 *!*/
     animation: gradientBG 5s ease infinite;
 }
 /* 动画，控制背景 background-position */
@@ -26,6 +25,16 @@ body {
      100% {
          background-position: 0% 50%;
      }
+}
+
+#app {
+    width:90%;
+    border:12px solid #000;
+    box-shadow: 0 0 8px rgba(0,0,0,.5);
+    position: relative;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
 }
 
 h1 {
@@ -112,7 +121,7 @@ a.Button:hover {
 }
 
 #Header {
-    background-color: grey;
+    background-color: #000;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -126,12 +135,11 @@ a.Button:hover {
     align-items: center;
 
     a {
-        color: #eaac00;
+        color:#54c07a;
     }
 
     a:hover {
-        color:white;
-
+        color:#eaac00;
     }
 }
 
@@ -169,26 +177,28 @@ a.Button:hover {
     padding-bottom: 20px;
     padding-left:20px;
     height:60vh;
-    display: flex;
-    grid-template-columns: 5% 1fr;
+    display: grid;
+    grid-template-columns: 20% 50% 1fr;
+    gap:36px;
 }
 
 #SidebarContent {
-    position: relative;
-    left: 20%;
     grid-column:1/2;
     border-radius: 10px;
     background-color: rgba(211,211,211,.3);
     width:min-content;
     padding:20px;
     box-shadow: 10px 10px 4px rgba(0,0,0,.3);
-    animation:0.4s linear forwards;
 }
 
 #MainImage {
-    position: absolute;
-    left: 35%;
     grid-column: 2/3;
+    justify-self: center;
+    align-self: center;
+}
+
+.profile-table {
+    grid-column: 3/4;
     justify-self: center;
     align-self: center;
 }
