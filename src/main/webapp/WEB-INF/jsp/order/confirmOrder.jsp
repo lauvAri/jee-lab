@@ -12,6 +12,8 @@
       <th style="text-align:center" colspan="2"><span style="font-size: medium; "><b>Order</b></span>
         <br />
         <span style="font-size: small; "><b> date</b></span>
+        <fmt:formatDate value="${sessionScope.order.orderDate}"
+                        pattern="yyyy/MM/dd hh:mm:ss" />
       </th>
     </tr>
 

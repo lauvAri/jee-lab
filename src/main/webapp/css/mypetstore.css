@@ -416,3 +416,7 @@ tr:nth-child(even) {
 tr:hover {
     background-color: #E6E6FA; /* 鼠标悬停时的背景色 */
 }
+
+#Catalog table{
+    width: 75%;
+}
