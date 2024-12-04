@@ -44,7 +44,7 @@
          <td>First name:</td>
          <td>
             <label>
-               <input type="text" name="order.billToFirstName">
+               <input type="text" name="order.billToFirstName" value="${sessionScope.order.billToFirstName}">
             </label>
          </td>
       </tr>
@@ -52,7 +52,7 @@
          <td>Last name:</td>
          <td>
             <label>
-               <input type="text" name="order.billToLastName">
+               <input type="text" name="order.billToLastName" value="${sessionScope.order.billToLastName}">
             </label>
          </td>
       </tr>
@@ -60,7 +60,7 @@
          <td>Address 1:</td>
          <td>
             <label>
-               <input type="text" size="40" name="order.billAddress1">
+               <input type="text" size="40" name="order.billAddress1" value="${sessionScope.order.billAddress1}">
             </label>
          </td>
       </tr>
@@ -68,7 +68,7 @@
          <td>Address 2:</td>
          <td>
             <label>
-               <input type="text" size="40" name="order.billAddress2">
+               <input type="text" size="40" name="order.billAddress2" value="${sessionScope.order.billAddress2}">
             </label>
          </td>
       </tr>
@@ -76,7 +76,7 @@
          <td>City:</td>
          <td>
             <label>
-               <input type="text" name="order.billCity">
+               <input type="text" name="order.billCity" value="${sessionScope.order.billCity}">
             </label>
          </td>
       </tr>
@@ -84,7 +84,7 @@
          <td>State:</td>
          <td>
             <label>
-               <input type="text" size="4" name="order.billState">
+               <input type="text" size="4" name="order.billState" value="${sessionScope.order.billState}">
             </label>
          </td>
       </tr>
@@ -92,7 +92,7 @@
          <td>Zip:</td>
          <td>
             <label>
-               <input type="text" size="10" name="order.billZip">
+               <input type="text" size="10" name="order.billZip" value="${sessionScope.order.billZip}">
             </label>
          </td>
       </tr>
@@ -100,7 +100,7 @@
          <td>Country:</td>
          <td>
             <label>
-               <input type="text" size="15" name="order.billCountry">
+               <input type="text" size="15" name="order.billCountry" value="${sessionScope.order.billCountry}">
             </label>
          </td>
       </tr>

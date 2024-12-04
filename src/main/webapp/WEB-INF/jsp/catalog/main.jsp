@@ -113,11 +113,11 @@
 
     <div class="MainBanner">
         <ul class="MainBannerImage">
-            <li><a href="#"><img src="images/mainBanner_fish.png" alt="Fish"></a></li>
-            <li><a href="#"><img src="images/mainBanner_dogs.png" alt="Dogs"></a></li>
-            <li><a href="#"><img src="images/mainBanner_reptiles.png" alt="Reptiles"></a></li>
-            <li><a href="#"><img src="images/mainBanner_cat.png" alt="Cats"></a></li>
-            <li><a href="#"><img src="images/mainBanner_birds.png" alt="Birds"></a></li>
+            <li><a href="/categoryFilter?categoryId=FISH"><img src="images/mainBanner_fish.png" alt="Fish"></a></li>
+            <li><a href="/categoryFilter?categoryId=DOGS"><img src="images/mainBanner_dogs.png" alt="Dogs"></a></li>
+            <li><a href="/categoryFilter?categoryId=REPTILES"><img src="images/mainBanner_reptiles.png" alt="Reptiles"></a></li>
+            <li><a href="/categoryFilter?categoryId=CATS"><img src="images/mainBanner_cat.png" alt="Cats"></a></li>
+            <li><a href="/categoryFilter?categoryId=BIRDS"><img src="images/mainBanner_birds.png" alt="Birds"></a></li>
         </ul>
         <!--放置圆点-->
         <ul class="MainBannerNum"></ul>

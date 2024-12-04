@@ -36,6 +36,14 @@ public class NewOrderFormServlet extends HttpServlet {
             order = new Order();
             order.initOrder(account,cart);
             session.setAttribute("order", order);
+            session.setAttribute("order.billToFirstName",account.getFirstName());
+            session.setAttribute("order.billToLastName",account.getLastName());
+            session.setAttribute("order.billAddress1",account.getAddress1());
+            session.setAttribute("order.billAddress2",account.getAddress2());
+            session.setAttribute("order.billCity",account.getCity());
+            session.setAttribute("order.billState",account.getState());
+            session.setAttribute("order.billZipCode",account.getZip());
+            session.setAttribute("order.billCountry",account.getCountry());
             List<String> cardTypes = orderService.getCardType();
             session.setAttribute("cardTypes", cardTypes);
             req.getRequestDispatcher(NEW_ORDER_FORM).forward(req, resp);
