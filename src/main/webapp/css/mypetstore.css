@@ -149,19 +149,69 @@ a.Button:hover {
     margin-left:72px;
 }
 
-#Search input {
-    outline:none;
-    border:none;
-    padding:10px;
-    background-color: #666;
-    color: #eaac00;
-    cursor: pointer;
-    border-radius:16px;
+/*#Search input {*/
+/*    outline:none;*/
+/*    border:none;*/
+/*    padding:10px;*/
+/*    background-color: #666;*/
+/*    color: #eaac00;*/
+/*    cursor: pointer;*/
+/*    border-radius:16px;*/
+/*}*/
+
+/*#Search input:hover, #Search input:focus {*/
+/*    color:black;*/
+/*    background-color: #fff;*/
+/*}*/
+
+#search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    padding: 8px;
 }
 
-#Search input:hover, #Search input:focus {
-    color:black;
-    background-color: #fff;
+#search-form input {
+    flex: 1;
+    outline:none;
+    border:none;
+    background-color: transparent;
+    color: #eaac00;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius:16px;
+    padding: 4px;
+}
+
+#search-form button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#search-suggestion-content {
+    background: rgba(256, 256, 256, .75);
+    border-radius: 6px;
+    box-shadow: 10px 10px 4px rgba(0, 0, 0, .3);
+    z-index: 999;
+    position :  absolute;
+    width :  211px;
+    padding :  10px;
+}
+
+#search-suggestion-content > li{
+    margin: 3px;
+    cursor: pointer;
+}
+
+#search-suggestion-content > li:hover{
+    color: #ddd;
+    background: #333;
 }
 
 #QuickLinks {
