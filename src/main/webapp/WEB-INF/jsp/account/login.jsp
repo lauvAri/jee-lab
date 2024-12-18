@@ -63,7 +63,7 @@
                         </div>
                         <div class="form-group">
                             <span id="gen-code-btn">get captcha</span>
-                            <input type="text" id="veri-code" name="veri-code">
+                            <input type="text" id="veri-code" name="veri-code" autocomplete="off">
                             <div id="verify-code-view" style="width:100%;margin-top:4px"></div>
                         </div>
                         <div class="form-group">
