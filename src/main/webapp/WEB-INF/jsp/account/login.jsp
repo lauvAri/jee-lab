@@ -19,6 +19,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/registration.css">
+    <%--boxicons--%>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
         #gen-code-btn {
             display: inline-block;
@@ -27,6 +29,21 @@
             background:#1da0f2;
             color:#fff;
             cursor: pointer;
+        }
+        .bx-check {
+            display: none;
+            color: green;
+            font-weight: bold;
+            font-size: 12px;
+            margin-left: 4px;
+        }
+        .green {
+            border: 2px solid green;
+            border-radius: 4px;
+        }
+        .red {
+            border: 2px solid red;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -50,18 +67,26 @@
                     <h2 class="form-title">Sign in</h2>
                     <form method="post" action="login" class="register-form"
                           id="login-form" onsubmit="return checkVeri()">
-                        <div class="form-group">
-                            <label for="username"><i
-                                    class="zmdi zmdi-account material-icons-name"></i></label> <input
+                        <div class="form-group" id="username-box">
+                            <label for="username">
+                                <i class="zmdi zmdi-account material-icons-name"></i>
+                                <i class='bx bx-check'></i>
+                            </label>
+                            <input
                                 type="text" name="username" id="username"
                                 placeholder="Your Name" />
+                            <i class='bx bx-check'></i>
                         </div>
-                        <div class="form-group">
-                            <label for="password"><i class="zmdi zmdi-lock"></i></label> <input
+                        <div class="form-group" id="password-box">
+                            <label for="password">
+                                <i class="zmdi zmdi-lock"></i>
+                                <i class='bx bx-check'></i>
+                            </label>
+                            <input
                                 type="password" name="password" id="password"
                                 placeholder="Password" />
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="captcha-box">
                             <span id="gen-code-btn">get captcha</span>
                             <input type="text" id="veri-code" name="veri-code" autocomplete="off">
                             <div id="verify-code-view" style="width:100%;margin-top:4px"></div>
@@ -96,7 +121,7 @@
 </div>
 
 <!-- JS -->
-<script src="vendor/jquery/jquery.min.js"></script>
+<script src="/js/jquery-3.7.1.min.js"></script>
 <script src="js/main.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" href="alert/dist/sweetalert.css">
@@ -106,35 +131,8 @@
     if (status === "failed") {
         swal("${requestScope.loginMsg}");
     }
-
-    //验证码
-    const genCodeBtn = document.querySelector("#gen-code-btn");
-    function genCode() {
-        let code = "";
-        const str = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOASDFGHJKLZXCVBNM';
-        let len = Math.floor(4 + Math.random() * 3);
-        for (let i = 0; i < len; i++) {
-            let random = Math.floor(Math.random()*str.length);
-            code += str[random];
-        }
-        let codeHTML = code.split('').map((char)=>{
-            let degree = -20 + Math.floor(-30 + Math.random() * 40);
-            return '<span style="display: inline-block;transform:rotate(' + degree + 'deg); user-select: none; font-family: Georgia">' + char + '</span>';
-        }).join("");
-        document.querySelector('#verify-code-view').innerHTML = codeHTML;
-    }
-    genCodeBtn.addEventListener('click', genCode);
-
-    function checkVeri() {
-        const verifyCode = document.querySelector('#veri-code').value;
-        const genCode = document.querySelector('#verify-code-view').innerText;
-        if (verifyCode.toUpperCase() != genCode.toUpperCase()) {
-            swal("验证码错误");
-            return false;
-        }
-        return true;
-    }
 </script>
+<script src="/js/checkLogin.js"></script>
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
