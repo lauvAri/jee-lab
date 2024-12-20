@@ -38,12 +38,12 @@
             margin-left: 4px;
         }
         .green {
-            border: 2px solid green;
-            border-radius: 4px;
+            background: green;
+            opacity: 40%;
         }
         .red {
-            border: 2px solid red;
-            border-radius: 4px;
+            background: red;
+            opacity: 40%;
         }
     </style>
 </head>
@@ -120,11 +120,6 @@
 
 </div>
 
-<!-- JS -->
-<script src="/js/jquery-3.7.1.min.js"></script>
-<script src="js/main.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<link rel="stylesheet" href="alert/dist/sweetalert.css">
 
 <script>
     const status = document.getElementById("status").value;
@@ -132,6 +127,7 @@
         swal("${requestScope.loginMsg}");
     }
 </script>
+<script src="/js/jquery-3.7.1.min.js"></script>
 <script src="/js/checkLogin.js"></script>
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
