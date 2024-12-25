@@ -197,6 +197,8 @@ a.Button:hover {
     grid-column: 2/3;
     justify-self: center;
     align-self: center;
+    position: relative;
+    bottom: 75px;
 }
 
 .profile-table {

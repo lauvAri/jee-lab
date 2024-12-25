@@ -36,7 +36,7 @@
             </a>
             <img align="middle" src="images/separator.gif" />
             <c:if test="${sessionScope.loginAccount == null}">
-                <a href="/registrationView">Sign In</a>
+                <a href="registrationView">Sign In</a>
             </c:if>
             <c:if test="${sessionScope.loginAccount != null}">
                 <a href="logout">Sign Out</a>
@@ -62,13 +62,13 @@
 </div>
 
 <div id="QuickLinks">
-    <a href="/categoryFilter?categoryId=FISH"><img src="../images/sm_fish.gif" /></a>
-    <a href="#"><img src="../images/separator.gif" /> </a>
-    <a href="/categoryFilter?categoryId=DOGS"><img src="../images/sm_dogs.gif" /></a>
-    <a href="#"><img src="../images/separator.gif" /></a>
-    <a href="/categoryFilter?categoryId=REPTILES"><img src="../images/sm_reptiles.gif" /></a>
-    <a href="#"><img src="../images/separator.gif" /> </a>
-    <a href="/categoryFilter?categoryId=CATS"><img src="../images/sm_cats.gif" /></a>
-    <a href="#"><img src="../images/separator.gif" /> </a>
-    <a href="/categoryFilter?categoryId=BIRDS"><img src="../images/sm_birds.gif" /></a>
+    <a href="categoryFilter?categoryId=FISH"><img src="images/sm_fish.gif" /></a>
+    <a href="#"><img src="images/separator.gif" /> </a>
+    <a href="categoryFilter?categoryId=DOGS"><img src="images/sm_dogs.gif" /></a>
+    <a href="#"><img src="images/separator.gif" /></a>
+    <a href="categoryFilter?categoryId=REPTILES"><img src="images/sm_reptiles.gif" /></a>
+    <a href="#"><img src="images/separator.gif" /> </a>
+    <a href="categoryFilter?categoryId=CATS"><img src="images/sm_cats.gif" /></a>
+    <a href="#"><img src="images/separator.gif" /> </a>
+    <a href="categoryFilter?categoryId=BIRDS"><img src="images/sm_birds.gif" /></a>
 </div>

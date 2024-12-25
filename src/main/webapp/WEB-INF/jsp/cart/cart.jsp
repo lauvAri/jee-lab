@@ -38,7 +38,7 @@
                                 ${cartItem.item.attribute5} ${cartItem.item.product.name}</td>
                         <td>${cartItem.inStock}</td>
                         <td>
-                            <input type="text" name="${cartItem.item.itemId}" value="${cartItem.quantity}">
+                            <input type="text" name="${cartItem.item.itemId}" value="${cartItem.quantity}" id="cartNum" onblur="updateCartNum()">
                         </td>
                         <td><fmt:formatNumber value="${cartItem.item.listPrice}"
                                               pattern="$#,##0.00" /></td>
@@ -73,5 +73,30 @@
 
     </div>
 </div>
+<script>
+    var xhr;
+    function updateCartNum(){
+        xhr = new XMLHttpRequest();
+        var cartNum = document.getElementById("cartNum").value;
+        var itemId = document.getElementById("cartNum").name;
+        console.log(itemId);
+        xhr.onreadystatechange = prossce();
+        xhr.open("GET","updateCartAJAX?cartNum=" + cartNum + "&workingItemId=" + itemId,true);
+        xhr.send(null);
+    }
+    function prossce(){
+        if(xhr.readyState == 4){
+            if(xhr.status == 200){
+                var responseInFo = xhr.responseText;
+                //var msg = document.getElementById("cartNum");
+                if(responseInFo == "Success"){
+                    console.log("Success");
+                }else{
+                    console.log("Failed");
+                }
+            }
+        }
+    }
+</script>
 
 <%@ include file="../common/bottom.jsp"%>

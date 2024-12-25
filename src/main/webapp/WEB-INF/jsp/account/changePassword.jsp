@@ -38,14 +38,14 @@
                 <button class="submit-btn" onclick="validatePasswords()">
                     confirm
                 </button>
-                <a class="go-back-btn" href="/mainForm">
+                <a class="go-back-btn" href="mainForm">
                     go back
                 </a>
             </div>
         </div>
 
         <div class="right-part">
-            <img src="/images/cat-bg.jpg" alt="" class="cat-img">
+            <img src="images/cat-bg.jpg" alt="" class="cat-img">
         </div>
     </form>
 </div>
