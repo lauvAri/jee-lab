@@ -15,6 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap" rel="stylesheet">
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/mainBanner.js"></script>
+    <link rel="stylesheet" href="/css/filteredData.css">
+    <link rel="stylesheet" href="/css/my_cart.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </head>
 
 <body>
@@ -86,3 +89,35 @@
     <a href="#"><img src="../images/separator.gif" /> </a>
     <a href="/categoryForm?categoryId=BIRDS"><img src="../images/sm_birds.gif" /></a>
 </div>
+    <c:if test="${sessionScope.loginAccount != null}">
+    <div id="filter-container" style="display: none">
+        <select id="category-filter" name="category-filter">
+            <option value="" disabled selected>Choose Category</option>
+            <option value="BIRDS">Birds</option>
+            <option value="CATS">Cats</option>
+            <option value="DOGS">Dogs</option>
+            <option value="FISH">Fish</option>
+            <option value="REPTILES">Reptiles</option>
+        </select>
+        <select id="product-filter" name="product-filter">
+            <option value="" disabled selected>Choose Category</option>
+        </select>
+    </div>
+    <div id="cart-preview-box">
+        <box-icon name='cart-alt' id="cart-btn"></box-icon>
+        <div id="cart-preview" style="display:none;">
+            My Cart
+        </div>
+    </div>
+    <script>
+        document.getElementById('cart-btn').addEventListener('click', function () {
+            const cartPreview = document.getElementById('cart-preview')
+            if (cartPreview.style.display === 'none') {
+                cartPreview.style.display = 'flex'
+            } else {
+                cartPreview.style.display = 'none'
+            }
+        })
+    </script>
+
+    </c:if>

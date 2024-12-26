@@ -128,6 +128,7 @@
         </div>
     </div>
 </div>
+<div id="filtered-data-container"></div>
 
 
 <%@ include file="../common/bottom.jsp"%>

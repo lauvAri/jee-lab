@@ -1,0 +1,44 @@
+div#filter-container {
+    background: #fff;
+}
+
+select#category-filter, select#product-filter {
+    padding: 12px;
+    border: 2px solid #22c55e;
+    border-radius: 20px;
+}
+
+div#filtered-data-container {
+    padding: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 14px;
+    background: #fff;
+}
+
+div.filtered-data-entry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #aaa;
+    border-radius: 12px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+    padding: 16px;
+    opacity: .5;
+    transition: transform .5s ease, scale .5s ease, opacity .5s ease;
+}
+
+div.filtered-data-entry:hover {
+    transform: translateY(-5%) rotate(3deg);
+    scale: 1.05;
+    opacity: 1;
+}
+
+button.add-to-item-btn {
+    padding: 4px 6px;
+    background: transparent;
+    border: 1px solid #000;
+    border-radius: 26px;
+    margin-top: 12px;
+}
