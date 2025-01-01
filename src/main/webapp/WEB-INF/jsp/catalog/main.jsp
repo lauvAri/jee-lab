@@ -72,7 +72,37 @@
             </map>
             <img height="355" src="images/splash.gif" align="middle"
                  usemap="#estoremap" width="350" /></div>
+        <div id="MainImageDes" style="text-align: center; border: black solid 2px; border-radius:8px;display: none;">
+
+        </div>
     </div>
+
+    <script>
+        var xhr;
+        function mouseOverImg(type){
+            console.log(type);
+            xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = process;
+            xhr.open("GET","mainImgAJAX?type=" + type,true);
+            xhr.send(null);
+        }
+        function process(){
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    var resp = xhr.responseText;
+                    //显示悬浮层
+                    var des = document.getElementById("MainImageDes");
+                    des.innerText = resp;
+                    des.style.display = "block";
+                }
+            }
+        }
+        function mouseLeftImg(){
+            var des = document.getElementById('MainImageDes');
+            des.style.display="none";
+        }
+    </script>
+
     <div class="profile-table">
         <table>
             <h3>profile</h3>
@@ -129,6 +159,5 @@
     </div>
 </div>
 <div id="filtered-data-container"></div>
-
 
 <%@ include file="../common/bottom.jsp"%>

@@ -39,7 +39,7 @@
             </a>
             <img align="middle" src="images/separator.gif" />
             <c:if test="${sessionScope.loginAccount == null}">
-                <a href="/registrationView">Sign In</a>
+                <a href="registrationView">Sign In</a>
             </c:if>
             <c:if test="${sessionScope.loginAccount != null}">
                 <a href="logout">Sign Out</a>

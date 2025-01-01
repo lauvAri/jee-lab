@@ -137,6 +137,7 @@ public class CartDaoImpl implements CartDao {
             preparedStatement.setInt(1,quantity);
             preparedStatement.setString(2,username);
             preparedStatement.setString(3,item);
+            preparedStatement.executeUpdate();
             preparedStatement.close();
             connection.close();
         } catch (Exception e) {

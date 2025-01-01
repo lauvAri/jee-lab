@@ -31,6 +31,7 @@ public class CartService {
     }
 
     public void updateCart(String username,String itemId,int quantity) {
+        System.out.println("func service updateQuantity"+"username="+username+",itemId="+itemId+",quantity="+quantity);
         cartDao.updateCart(username, itemId, quantity);
     }
 }
