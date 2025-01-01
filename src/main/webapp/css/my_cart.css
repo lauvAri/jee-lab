@@ -1,0 +1,36 @@
+div#cart-preview-box {
+    max-height: 80vh;
+    background: #fff;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 999;
+    top: 3px;
+    left: 89%;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .6);
+    padding: 12px;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+div#cart-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: display 1s ease;
+}
+
+div.cart-entry {
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    padding: 6px;
+    border-radius: 6px;
+    transition: all .5s ease;
+}
+
+div.cart-entry:hover {
+    height: 100px;
+    background: #000;
+    color:#fff;
+}
