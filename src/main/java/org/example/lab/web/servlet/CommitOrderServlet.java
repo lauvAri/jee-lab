@@ -72,6 +72,9 @@ public class CommitOrderServlet extends HttpServlet {
 //        System.out.println(order.getShipZip());
 //        System.out.println(order.getShipCountry());
 
+        // 返回成功响应
+//        resp.setContentType("text/plain");
+//        resp.getWriter().write("Shipping information updated successfully!");
         req.getRequestDispatcher(CONFIRM_ORDER_FORM).forward(req, resp);
     }
 }
