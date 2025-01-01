@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@ include file="../common/top.jsp"%>
 
 
@@ -58,17 +60,17 @@
         <div id="MainImageContent">
             <map name="estoremap">
                 <area alt="Birds" coords="72,2,280,250"
-                      href="/categoryForm?categoryId=BIRDS" shape="RECT" />
+                      href="/categoryForm?categoryId=BIRDS" shape="RECT" onmouseover=mouseOverImg("BIRDS") onmouseleave="mouseLeftImg()"/>
                 <area alt="Fish" coords="2,180,72,250"
-                      href="/categoryForm?categoryId=FISH" shape="RECT" />
+                      href="/categoryForm?categoryId=FISH" shape="RECT" onmouseover=mouseOverImg("FISH") onmouseleave="mouseLeftImg()"/>
                 <area alt="Dogs" coords="60,250,130,320"
-                      href="/categoryForm?categoryId=DOGS" shape="RECT" />
+                      href="/categoryForm?categoryId=DOGS" shape="RECT" onmouseover=mouseOverImg("DOGS") onmouseleave="mouseLeftImg()"/>
                 <area alt="Reptiles" coords="140,270,210,340"
-                      href="/categoryForm?categoryId=REPTILES" shape="RECT" />
+                      href="/categoryForm?categoryId=REPTILES" shape="RECT" onmouseover=mouseOverImg("REPTILES") onmouseleave="mouseLeftImg()"/>
                 <area alt="Cats" coords="225,240,295,310"
-                      href="/categoryForm?categoryId=CATS" shape="RECT" />
+                      href="/categoryForm?categoryId=CATS" shape="RECT" onmouseover=mouseOverImg("CATS") onmouseleave="mouseLeftImg()"/>
                 <area alt="Birds" coords="280,180,350,250"
-                      href="/categoryForm?categoryId=BIRDS" shape="RECT" />
+                      href="/categoryForm?categoryId=BIRDS" shape="RECT" onmouseover=mouseOverImg("BIRDS") onmouseleave="mouseLeftImg()"/>
             </map>
             <img height="355" src="images/splash.gif" align="middle"
                  usemap="#estoremap" width="350" /></div>

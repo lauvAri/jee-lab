@@ -1,7 +1,12 @@
 <%@ include file="../common/top.jsp"%>
 
 <div id="BackLink">
-    <a href="<c:url value="/mainForm"/>">Return to Main Menu</a>
+    <button class="return-btn">
+        <span>
+            <a href="<c:url value="/mainForm"/>">Return to Main Menu</a>
+        </span>
+    </button>
+
 </div>
 
 <div id="Catalog">

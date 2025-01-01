@@ -1,7 +1,12 @@
 <%@ include file="../common/top.jsp"%>
 
 <div id="BackLink">
-    <a href="mainForm">Return to Main Menu</a>
+    <button class="return-btn">
+        <span>
+            <a href="mainForm">Return to Main Menu</a>
+        </span>
+    </button>
+
 </div>
 
 <div id="Catalog-Cart">
@@ -30,7 +35,7 @@
                 <c:forEach var="cartItem" items="${sessionScope.cart.cartItems}">
                     <tr>
                         <td>
-                            <a href="<c:url value="/ItemForm?itemId=${cartItem.item.itemId}"/>">${cartItem.item.itemId}</a>
+                            <a href="<c:url value="/itemForm?itemId=${cartItem.item.itemId}"/>">${cartItem.item.itemId}</a>
                         </td>
                         <td>${cartItem.item.product.productId}</td>
                         <td>${cartItem.item.attribute1} ${cartItem.item.attribute2}

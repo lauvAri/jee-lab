@@ -3,9 +3,14 @@
 <div id="BackLink"><stripes:link
         beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean"
         event="viewCategory">
-    <a href="categoryForm?categoryId=${sessionScope.product.categoryId}">
-        Return to ${sessionScope.product.categoryId}
-    </a>
+    <button class="return-btn">
+        <span>
+            <a href="categoryForm?categoryId=${sessionScope.product.categoryId}">
+            Return to ${sessionScope.product.categoryId}
+            </a>
+        </span>
+    </button>
+
 </div>
 
 <div id="Catalog">

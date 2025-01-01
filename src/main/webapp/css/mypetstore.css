@@ -335,19 +335,19 @@ li {
     background-color: white;
 }
 
-#BackLink a {
-    margin-right: 16px;
-    margin-bottom: 16px;
-    background-color: rgba(0,0,0,.5);
-    padding: 16px;
-    border-radius: 6px;
-}
+/*#BackLink a {*/
+/*    margin-right: 16px;*/
+/*    margin-bottom: 16px;*/
+/*    background-color: rgba(0,0,0,.5);*/
+/*    padding: 16px;*/
+/*    border-radius: 6px;*/
+/*}*/
 
-#BackLink a:hover {
-    color:black;
-    background: white;
-    border: grey 2px;
-}
+/*#BackLink a:hover {*/
+/*    color:black;*/
+/*    background: ;*/
+/*    border: grey 2px;*/
+/*}*/
 
 #Cart{
     width: 69.99%;
@@ -424,7 +424,7 @@ li {
 }
 
 .MainBannerBtn{
-    display: none;
+    display: block;
 }
 
 .MainBannerBtn span{
@@ -491,4 +491,46 @@ tr:hover {
 
 #Catalog table{
     width: 75%;
+}
+
+
+.return-btn {
+    display:block;
+    /*position: absolute;*/
+    position: relative;
+    cursor: pointer;
+    color:white;
+    background-color:black;
+    height:60px;
+    width:120px;
+    font-size: 20px;
+    border: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.return-btn span{
+    position: relative;
+    z-index: 2;
+}
+
+.return-btn::after{
+    content: " ";
+    height:300px;
+    width:300px;
+    z-index: 1;
+    background-color: aqua;
+    position: absolute;
+    top:0;
+    left: 0;
+    transition:  all .5s linear;
+    transform: translateX(-95%) translateY(-15%) rotate(45deg);
+}
+
+.return-btn:hover::after{
+    transform: translateX(-15%) translateX(-15%) rotate(45deg);
+}
+
+.return-btn span a {
+    color: green;
 }
