@@ -91,8 +91,6 @@ public class OrderBillAJAX extends HttpServlet {
             session.setAttribute("order.shipState", state);
             session.setAttribute("order.shipZip", zip);
             session.setAttribute("order.shipCountry", country);
-
-            req.getRequestDispatcher(CONFIRM_ORDER_FORM).forward(req, resp);
         }else{
             order.setShipToFirstName("");
             order.setShipToLastName("");
