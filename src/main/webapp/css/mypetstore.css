@@ -198,7 +198,8 @@ a.Button:hover {
     justify-self: center;
     align-self: center;
     position: relative;
-    bottom: 75px;
+    top: -150px;
+    height: 200px;
 }
 
 .profile-table {

@@ -57,22 +57,22 @@
     <div id="MainImage">
         <div id="MainImageContent">
             <map name="estoremap">
-                <area alt="Birds" coords="72,2,280,250" onmouseover=mouseOverImg("BIRDS")
+                <area alt="Birds" coords="72,2,280,250" onmouseover=mouseOverImg("BIRDS") onmouseleave="mouseLeftImg()"
                       href="categoryFilter?categoryId=BIRDS" shape="RECT"/>
-                <area alt="Fish" coords="2,180,72,250" onmouseover=mouseOverImg("FISH")
+                <area alt="Fish" coords="2,180,72,250" onmouseover=mouseOverImg("FISH") onmouseleave="mouseLeftImg()"
                       href="categoryFilter?categoryId=FISH" shape="RECT" />
-                <area alt="Dogs" coords="60,250,130,320" onmouseover=mouseOverImg("DOG")
+                <area alt="Dogs" coords="60,250,130,320" onmouseover=mouseOverImg("DOGS") onmouseleave="mouseLeftImg()"
                       href="categoryFilter?categoryId=DOGS" shape="RECT" />
-                <area alt="Reptiles" coords="140,270,210,340" onmouseover=mouseOverImg("REPTILE")
+                <area alt="Reptiles" coords="140,270,210,340" onmouseover=mouseOverImg("REPTILES") onmouseleave="mouseLeftImg()"
                       href="categoryFilter?categoryId=REPTILES" shape="RECT" />
-                <area alt="Cats" coords="225,240,295,310" onmouseover=mouseOverImg("CAT")
+                <area alt="Cats" coords="225,240,295,310" onmouseover=mouseOverImg("CATS") onmouseleave="mouseLeftImg()"
                       href="categoryFilter?categoryId=CATS" shape="RECT" />
-                <area alt="Birds" coords="280,180,350,250" onmouseover=mouseOverImg("BIRDS")
+                <area alt="Birds" coords="280,180,350,250" onmouseover=mouseOverImg("BIRDS") onmouseleave="mouseLeftImg()"
                       href="categoryFilter?categoryId=BIRDS" shape="RECT" />
             </map>
             <img height="355" src="images/splash.gif" align="middle"
                  usemap="#estoremap" width="350" /></div>
-        <div id="MainImageDes">
+        <div id="MainImageDes" style="text-align: center; border: black solid 2px; border-radius:8px;display: none;">
 
         </div>
     </div>
@@ -80,8 +80,26 @@
     <script>
         var xhr;
         function mouseOverImg(type){
+            console.log(type);
             xhr = new XMLHttpRequest();
-
+            xhr.onreadystatechange = process;
+            xhr.open("GET","mainImgAJAX?type=" + type,true);
+            xhr.send(null);
+        }
+        function process(){
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    var resp = xhr.responseText;
+                    //显示悬浮层
+                    var des = document.getElementById("MainImageDes");
+                    des.innerText = resp;
+                    des.style.display = "block";
+                }
+            }
+        }
+        function mouseLeftImg(){
+            var des = document.getElementById('MainImageDes');
+            des.style.display="none";
         }
     </script>
 
