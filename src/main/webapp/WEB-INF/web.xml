@@ -95,7 +95,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ItemForm</servlet-name>
-        <url-pattern>/ItemForm</url-pattern>
+        <url-pattern>/itemForm</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProductForm</servlet-name>

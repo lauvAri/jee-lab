@@ -12,5 +12,10 @@
 
 </div>
 </div>
+<script src="/js/filterData.js"></script>
+<script src="/js/toogleFilter.js"></script>
+<script src="/js/getCartData.js"></script>
+<script src="/js/updateCartPreview.js"></script>
+
 </body>
 </html>
