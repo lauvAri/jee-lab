@@ -17,7 +17,7 @@ filteredDataContainer.addEventListener('click', function (e){
                         const $cartPreview = $('#cart-preview')
                         const allCartItems = data.allCartItems;
                         $cartPreview.html('')
-                        $cartPreview.append('My Cart')
+                        //$cartPreview.append('My Cart')
                         for (let a of allCartItems) {
                             let html = `<div class="cart-entry"><div>itemId: ${a.item.itemId}</div><div>listPrice: ${a.item.listPrice}</div><div>quantity: ${a.quantity}</div><div>total: ${a.total}</div></div>`
 

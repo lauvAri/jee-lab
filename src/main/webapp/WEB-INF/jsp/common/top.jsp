@@ -1,3 +1,4 @@
+<%@ page import="org.example.lab.domain.Account" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -104,9 +105,16 @@
         </select>
     </div>
     <div id="cart-preview-box">
-        <box-icon name='cart-alt' id="cart-btn"></box-icon>
+        <div id="cart-preview-head">
+            <box-icon name='cart-alt' id="cart-btn"></box-icon>
+            <span>
+                <%! Account loginAccount; %>
+                <% loginAccount = (Account) session.getAttribute("loginAccount"); %>
+                <%= loginAccount.getUsername() + "'s cart" %>
+            </span>
+        </div>
         <div id="cart-preview" style="display:none;">
-            My Cart
+
         </div>
     </div>
     <script>
