@@ -28,13 +28,16 @@
                 <input type="password" class="entry-input" id="confirmPassword" name="confirmPassword" required>
             </div>
             <div></div>
-            <div class="form-entry">
+            <div class="form-entry-btn">
                 <button class="submit-btn" onclick="validatePasswords()">
                     confirm
                 </button>
-                <a class="go-back-btn" href="mainForm">
-                    go back
-                </a>
+                <button id="go-back-btn">
+                    <a class="go-back-btn" href="mainForm">
+                        go back
+                    </a>
+                </button>
+
             </div>
         </div>
 
