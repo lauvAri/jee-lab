@@ -31,6 +31,14 @@
 </head>
 
 <body>
+<header>
+    <img src="images/logo.png" alt="cat" class="logo">
+    <ul>
+        <li><a href="mainForm">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</header>
 <div class="first-page">
     <h1>
             <span>
@@ -56,12 +64,19 @@
         <p>Let's get started.</p>
         <div class="btn-container">
 
-            <a href="loginView">
-                Sign In
-            </a>
-            <a href="registrationView">
-                Sign Up
-            </a>
+            <button class="login-btn">
+                <span class="cover"></span>
+                <a href="loginView" >
+                    Sign In
+                </a>
+            </button>
+           <button class="register-btn">
+               <span class="cover"></span>
+               <a href="registrationView" >
+                   Sign Up
+               </a>
+           </button>
+
         </div>
     </div>
 </div>

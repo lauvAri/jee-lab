@@ -1,26 +1,34 @@
 body {
-    /* 背景渐变色 - 原理2 */
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    /* 背景尺寸 - 原理3 */
-    background-size: 600% 600%;
-    /* 循环动画 - 原理4 */
-    animation: gradientBG 5s ease infinite;
+    /*!* 背景渐变色 - 原理2 *!*/
+    /*background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);*/
+    /*!* 背景尺寸 - 原理3 *!*/
+    /*background-size: 600% 600%;*/
+    /*!* 循环动画 - 原理4 *!*/
+    /*animation: gradientBG 5s ease infinite;*/
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url(../images/index-dog.jpg);
+    background-size: cover;
+    background-position: right;
+    background-clip: border-box;
+    overflow: scroll;
 }
 
-/* 动画，控制背景 background-position */
-@keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
+/*!* 动画，控制背景 background-position *!*/
+/*@keyframes gradientBG {*/
+/*    0% {*/
+/*        background-position: 0% 50%;*/
+/*    }*/
 
-    50% {
-        background-position: 100% 50%;
-    }
+/*    50% {*/
+/*        background-position: 100% 50%;*/
+/*    }*/
 
-    100% {
-        background-position: 0% 50%;
-    }
-}
+/*    100% {*/
+/*        background-position: 0% 50%;*/
+/*    }*/
+/*}*/
 
 h1 {
     letter-spacing: 6px;
@@ -60,26 +68,112 @@ p {
     justify-content: center;
 }
 
-.btn-container {
-    margin-top:24px;
+/*.btn-container {*/
+/*    margin-top:24px;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    gap:64px;*/
+/*}*/
+
+/*a {*/
+/*    padding:16px;*/
+/*    border-radius: 32px;*/
+/*    background-color: rgba(0,0,0,.6);*/
+/*    font-size:16px;*/
+/*    font-family: "Playwrite GB S", cursive;*/
+/*    font-weight: bold;*/
+/*    text-decoration: none;*/
+/*    color:white;*/
+/*}*/
+
+/*a:hover {*/
+/*    color:black;*/
+/*    background-color: #fff;*/
+/*}*/
+
+header {
+    background: rgba(256, 256, 256, .5);
+    position: fixed;
+    left:0;
+    top: 0;
+    padding: 26px;
+    width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap:64px;
+    justify-content: space-between;
+    z-index: 999;
+    .logo {
+        border-radius: 50%;
+        margin-left: 50px;
+        width: 80px;
+        cursor: pointer;
+    }
+
+    ul {
+        margin-right: 100px;
+    }
+
+    ul li {
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+    ul li a {
+        text-decoration: none;
+        color: #000;
+    }
+    ul li::after {
+        content: "";
+        height: 3px;
+        width: 0;
+        background: #009688;
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        transition: 0.5s;
+    }
+    ul li:hover::after {
+        width: 100%;
+    }
 }
 
-a {
-    padding:16px;
-    border-radius: 32px;
-    background-color: rgba(0,0,0,.6);
-    font-size:16px;
-    font-family: "Playwrite GB S", cursive;
-    font-weight: bold;
+.login-btn, .register-btn {
+    width: 200px;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    position: relative;
+    background: transparent;
+    margin: 12px;
+    padding: 6px;
+    overflow: hidden;
+}
+
+button a {
     text-decoration: none;
-    color:white;
+    color: #fff;
+    font-family: "Playwrite GB S", cursive;
+    font-size:16px;
+    font-weight: bold;
 }
-
-a:hover {
-    color:black;
-    background-color: #fff;
+.cover {
+    background: #009688;
+    height: 100%;
+    width: 0%;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+}
+.login-btn:hover span {
+    width: 100%;
+}
+.register-btn:hover span {
+    width: 100%;
+}
+.register-btn:hover, .login-btn:hover {
+    border: none;
 }
