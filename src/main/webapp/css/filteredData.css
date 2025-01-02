@@ -10,11 +10,17 @@ select#category-filter, select#product-filter {
 
 div#filtered-data-container {
     padding: 24px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 14px;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*justify-content: center;*/
+    /*gap: 14px;*/
     background: #fff;
+    display: grid;
+    grid-template-columns: 20% 20%;
+    gap: 26px;
+    justify-content: center;
+    max-height: 588px;
+    overflow: scroll;
 }
 
 div.filtered-data-entry {
@@ -36,9 +42,16 @@ div.filtered-data-entry:hover {
 }
 
 button.add-to-item-btn {
+    font-weight: bold;
     padding: 4px 6px;
     background: transparent;
     border: 1px solid #000;
     border-radius: 26px;
     margin-top: 12px;
+}
+
+button.add-to-item-btn:hover {
+    color: #fff;
+    background: linear-gradient(45deg, #bbf7d0, #4ade80, #059669);
+    cursor: pointer;
 }
