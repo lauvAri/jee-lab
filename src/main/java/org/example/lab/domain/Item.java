@@ -21,6 +21,14 @@ public class Item implements Serializable {
     private Product product;
     private int quantity;
 
+    private String descn;
+    public void setDescn(String descn) {
+        this.descn = descn;
+    }
+    public String getDescn() {
+        return descn;
+    }
+
     public String getItemId() {
         return itemId;
     }

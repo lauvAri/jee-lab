@@ -1,5 +1,4 @@
 div#cart-preview-box {
-    max-height: 80vh;
     background: #fff;
     border-radius: 20px;
     position: absolute;
@@ -8,12 +7,15 @@ div#cart-preview-box {
     left: 89%;
     box-shadow: 0 0 6px rgba(0, 0, 0, .6);
     padding: 12px;
-    overflow: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+
 }
 
 div#cart-preview {
+    margin-top: 23px;
+    max-height: 80vh;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,4 +34,5 @@ div.cart-entry {
 div.cart-entry:hover {
     background: #000;
     color:#fff;
+    cursor: pointer;
 }

@@ -10,17 +10,20 @@ import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CartDaoImpl implements CartDao {
     private static final String GET_CART_LIST_BY_USER ="SELECT\n" +
+            "      P.DESCN AS DESCN,\n" +
             "      ITEMID,\n" +
-            "      PRODUCTID,\n"+
+            "      C.PRODUCTID,\n"+
             "      ISINSHOCK,\n" +
             "      QUANTITY,\n" +
             "      DESCRIPTION,\n" +
             "      LISTPRICE\n" +
-            "      from CART \n"+
-            "    where USERID = ?";
+            "      from CART C, PRODUCT P\n"+
+            "    where C.USERID = ? AND P.PRODUCTID = C.PRODUCTID";
 
     private static final String INSERT_CART ="INSERT INTO CART \n" +
             "(USERID,ITEMID,PRODUCTID,ISINSHOCK,QUANTITY,DESCRIPTION,LISTPRICE)"+
@@ -58,6 +61,19 @@ public class CartDaoImpl implements CartDao {
                 BigDecimal listPrice = new BigDecimal(resultSet.getString("LISTPRICE"));
                 item.setListPrice(listPrice);
                 item.setAttribute1(resultSet.getString("DESCRIPTION"));
+
+                String descn = resultSet.getString("DESCN");
+                String regex = "<image[^>]*>"; // 匹配任意 <image> 标签
+                // 使用正则表达式匹配
+                Pattern pattern = Pattern.compile(regex);
+                Matcher matcher = pattern.matcher(descn);
+                if (matcher.find()) {
+                    String result = matcher.group(0);
+                    item.setDescn(result);
+                    System.out.println("Extracted content: " + result);
+                } else {
+                    System.out.println("No match found.");
+                }
 
                 boolean isInShock = resultSet.getBoolean("ISINSHOCK");
                 cart.addItem(item,isInShock);

@@ -105,12 +105,12 @@
         </select>
     </div>
     <div id="cart-preview-box">
-        <div id="cart-preview-head">
+        <div id="cart-preview-head" style="margin-bottom: 6px;">
             <box-icon name='cart-alt' id="cart-btn"></box-icon>
             <span>
                 <%! Account loginAccount; %>
                 <% loginAccount = (Account) session.getAttribute("loginAccount"); %>
-                <%= loginAccount.getUsername() + "'s cart" %>
+                <b><%= loginAccount.getUsername()%></b>'s cart
             </span>
         </div>
         <div id="cart-preview" style="display:none;">

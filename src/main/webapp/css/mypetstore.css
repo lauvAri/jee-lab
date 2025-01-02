@@ -76,25 +76,25 @@ p {
     padding: 2ex;
 }
 
-table {
-    border-width: 0;
-    empty-cells: show;
-}
+/*table {*/
+/*    border-width: 0;*/
+/*    empty-cells: show;*/
+/*}*/
 
-td, th {
-    empty-cells: show;
-    padding: .3ex .3ex;
-    vertical-align: top;
-    text-align: left;
-    border-width: 0;
-    border-spacing: 0;
-    background-color: #ececec
-}
+/*td, th {*/
+/*    empty-cells: show;*/
+/*    padding: .3ex .3ex;*/
+/*    vertical-align: top;*/
+/*    text-align: left;*/
+/*    border-width: 0;*/
+/*    border-spacing: 0;*/
+/*    background-color: #ececec*/
+/*}*/
 
-th {
-    font-weight: bold;
-    background-color: #e2e2e2;
-}
+/*th {*/
+/*    font-weight: bold;*/
+/*    background-color: #e2e2e2;*/
+/*}*/
 
 a {
     color:#eaac00;
@@ -489,9 +489,23 @@ tr:hover {
     background-color: #E6E6FA; /* 鼠标悬停时的背景色 */
 }
 
-#Catalog table{
-    width: 75%;
+/*图片*/
+td > img {
+    width: 70px;
 }
+
+/*#cart-table thead, #cart-table tbody {*/
+/*    display: block;*/
+/*}*/
+
+/*#cart-table tbody {*/
+/*    height: 200px; !* 设置tbody的高度 *!*/
+/*    overflow-y: auto;*/
+/*}*/
+
+/*#Catalog table{*/
+/*    width: 75%;*/
+/*}*/
 
 
 .return-btn {
