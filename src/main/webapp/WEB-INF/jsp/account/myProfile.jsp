@@ -25,7 +25,7 @@
                     // let data = xmlHttpRequest.response;
 
                     const userData = xmlHttpRequest.response;
-                    console.log(userData);
+                    console.log('userData: ',userData);
                     for (let key in userData) {
                         if (userData.hasOwnProperty(key)) {
                             let kebabKey = camelToKebab(key)
@@ -77,8 +77,23 @@
         <input type="text" name="country-input" id="country-input" class="entry-input" required>
     </div>
     <div class="form-group">
+        <span class="entry-label">zip</span>
+        <input type="text" name="zip-input" id="zip-input" class="entry-input" required>
+    </div>
+    <div class="form-group">
         <span class="entry-label">phone</span>
         <input type="text" name="phone-input" id="phone-input" class="entry-input" required>
+    </div>
+    <div class="form-group">
+        <span class="entry-label">favourite category</span>
+        <select name="favourite-category-id-input" id="favourite-category-id-input" class="entry-input">
+            <option value="" disabled selected></option>
+            <option value="BIRDS">birds</option>
+            <option value="CATS">cats</option>
+            <option value="DOGS">dogs</option>
+            <option value="FISH">fish</option>
+            <option value="REPTILES">reptiles</option>
+        </select>
     </div>
     <div class="form-group">
         <input type="submit" value="update" class="entry-input submit-btn">

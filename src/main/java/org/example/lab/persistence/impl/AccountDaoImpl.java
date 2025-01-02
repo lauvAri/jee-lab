@@ -7,6 +7,7 @@ import org.example.lab.persistence.DBUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class AccountDaoImpl implements AccountDao {
     private static final String GET_ACCOUNT_BY_USERNAME_AND_PASSWORD = "SELECT\n" +
@@ -88,9 +89,9 @@ public class AccountDaoImpl implements AccountDao {
             "    WHERE USERID = ?";
 
     private static final String UPDATE_PROFILE = "UPDATE PROFILE SET\n" +
-            "      LANGPREF = #{languagePreference},\n" +
-            "      FAVCATEGORY = #{favouriteCategoryId}\n" +
-            "    WHERE USERID = #{username}";
+            "      LANGPREF = ?,\n" +
+            "      FAVCATEGORY = ?\n" +
+            "    WHERE USERID = ?";
 
     @Override
     public Account getAccountByUsername(String username) {
@@ -259,6 +260,21 @@ public class AccountDaoImpl implements AccountDao {
 
     @Override
     public void updateProfile(Account account) {
+        try {
+            Connection conn = DBUtil.getConnection();
+            PreparedStatement ps = conn.prepareStatement(UPDATE_PROFILE);
+            ps.setString(1, account.getLanguagePreference());
+            ps.setString(2, account.getFavouriteCategoryId());
+            ps.setString(3, account.getUsername());
+            int row = ps.executeUpdate();
+            if (row > 0) {
+                System.out.println("update profile success!");
+                DBUtil.closeStatement(ps);
+                DBUtil.closeConnection(conn);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
