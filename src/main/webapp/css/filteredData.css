@@ -24,6 +24,7 @@ div#filtered-data-container {
 }
 
 div.filtered-data-entry {
+    margin-top: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
