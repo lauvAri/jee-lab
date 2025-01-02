@@ -59,6 +59,29 @@
     </h1>
 </div>
 
+<div class="shell">
+    <div class="box">
+        <img src="images/index-bird.jpg">
+        <span>bird</span>
+    </div>
+    <div class="box">
+        <img src="images/index-cat.jpg">
+        <span>cat</span>
+    </div>
+    <div class="box">
+        <img src="images/index-dog.jpg">
+        <span>dog</span>
+    </div>
+    <div class="box">
+        <img src="images/index-fish.jpg">
+        <span>fish</span>
+    </div>
+    <div class="box">
+        <img src="images/index-reptiles.jpg">
+        <span>reptiles</span>
+    </div>
+</div>
+
 <div class="second-page">
     <div class="start">
         <p>Let's get started.</p>
