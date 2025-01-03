@@ -493,6 +493,17 @@ tr:hover {
 td > img {
     width: 70px;
 }
+/*实现表头固定 begin*/
+#Cart form {
+    max-height: 370px;
+    overflow-y: scroll;
+}
+
+#Cart form th {
+    position: sticky;
+    top: 0;
+}
+/*实现表头固定 end*/
 
 /*#cart-table thead, #cart-table tbody {*/
 /*    display: block;*/
