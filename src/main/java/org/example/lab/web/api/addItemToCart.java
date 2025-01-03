@@ -41,11 +41,13 @@ public class addItemToCart extends HttpServlet {
             Item item = catalogService.getItem(workingItemId);
             item.setQuantity(1);
             item.setProductId(item.getProduct().getProductId());
+            item.setDescn(item.getProduct().getDescription());
             cart.addItem(item, isInStock);
             System.out.println("try add");
             cartService.insertCart(account.getUsername(),isInStock,item);
         }
-        session.setAttribute("cart", cart);
+        Cart newcart = cartService.getCart(account.getUsername());
+        session.setAttribute("cart", newcart);
 
         out.write("true");
     }
